@@ -3,6 +3,7 @@ import 'package:dinissa/views/home_screen.dart';
 import 'package:dinissa/views/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../util/app_colors.dart';
 
@@ -52,9 +53,9 @@ class _SignupScreen extends State<SignupScreen>{
                   //   fit: BoxFit.fill,
                   //   width: MediaQuery.of(context).size.width,
                   // ),
-                 SizedBox(height: 35,),
+                 SizedBox(height: 35.h,),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0,),
+                    padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                     child: Column(
                       children: [
 
@@ -65,7 +66,7 @@ class _SignupScreen extends State<SignupScreen>{
                           keyboardType: TextInputType.emailAddress,
                         ),
 
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 20.0.h),
                         _buildInputField(
                           controller: TextEditingController(),
                           labelText: 'LastName',
@@ -73,7 +74,7 @@ class _SignupScreen extends State<SignupScreen>{
                           keyboardType: TextInputType.emailAddress,
                         ),
 
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 20.0.h),
                         _buildInputField(
                           controller: _emailController,
                           labelText: 'Username',
@@ -81,7 +82,7 @@ class _SignupScreen extends State<SignupScreen>{
                           keyboardType: TextInputType.emailAddress,
                         ),
 
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 20.0.h),
                         _buildInputField(
                           controller: TextEditingController(),
                           labelText: 'Email',
@@ -89,22 +90,22 @@ class _SignupScreen extends State<SignupScreen>{
                           keyboardType: TextInputType.emailAddress,
                         ),
 
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 20.0.h),
                         _buildInputField(
                           controller: TextEditingController(),
                           labelText: 'Password',
                           prefixIcon: Icons.lock,
                           obscureText: true,
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 20.0.h),
                         Container(
                           height: 40, // Adjust the height as needed
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
+                            borderRadius: BorderRadius.circular(16.0.r),
                             border: Border.all(color: Colors.grey),
                           ),
                           child:Container(
-                            width: MediaQuery.of(context).size.width * 0.9, // 90% of screen width
+                            width: (MediaQuery.of(context).size.width * 0.9).w, // 90% of screen width
                             child: FloatingActionButton.extended(
                               onPressed: () {
                                 signUp(context, _emailController, _passwordController);
@@ -113,13 +114,13 @@ class _SignupScreen extends State<SignupScreen>{
                               backgroundColor: AppColors.primaryColor, // Background color
                               foregroundColor: Colors.black, // Color of the text/icon
                               shape: RoundedRectangleBorder( // Shape of the button
-                                borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                                borderRadius: BorderRadius.circular(8.0.r), // Rounded corners
                               ),
                               elevation: 5.0, // Elevation of the button
                             ),
                           ),
                         ),
-                        SizedBox(height: 10.0),
+                        SizedBox(height: 10.0.h),
                         GestureDetector(
                             onTap: ()=>{
                             Navigator.of(context).push(
@@ -167,17 +168,17 @@ Widget _buildInputField({
   return Container(
     height: 40, // Adjust the height as needed
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(16.0),
+      borderRadius: BorderRadius.circular(16.0.r),
       border: Border.all(color: Colors.grey),
     ),
     child: TextFormField(
       style: TextStyle(
-        fontSize: 14,
+        fontSize: 14.sp,
         color: Colors.white, // Set text color to white
       ),
       // controller: controller,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 8), // Adjust the content padding as needed
+        contentPadding: EdgeInsets.symmetric(vertical: 8.h), // Adjust the content padding as needed
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.white), // Set label text color to white
         prefixIcon: Icon(prefixIcon, color: Colors.white), // Set prefix icon color to white

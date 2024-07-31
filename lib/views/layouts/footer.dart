@@ -1,6 +1,6 @@
 import 'package:dinissa/util/app_constant.dart';
 import 'package:flutter/material.dart';
-import '../../routes/app.dart';
+import '../../routes/app_routes.dart';
 import '../../util/app_colors.dart';
 
 class Footer extends StatefulWidget {

@@ -1,8 +1,9 @@
-import 'package:dinissa/views/layouts/footer.dart';
 import 'package:flutter/material.dart';
-import 'package:dinissa/util/app_constant.dart';
 
-import '../util/app_colors.dart';
+import 'package:dinissa/views/layouts/footer.dart';
+
+import 'package:dinissa/util/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../util/crypto_card.dart';
 import '../util/crypto_service.dart';
 import '../util/news_card.dart';
@@ -28,20 +29,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     _topCryptos = CryptoService.fetchTopCryptos();
     _cryptoNews = CryptoService.fetchCryptoNews();
-    TextEditingController _searchController = TextEditingController();
+    TextEditingController searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-            child: Text('Dinissa'),
+        title: const Center(
+          child: Text('Dinissa'),
         ),
-        leading: Icon(Icons.settings),
+        leading: const Icon(Icons.settings),
         actions: [
           Padding(
-              padding: EdgeInsets.only(right:  12.0),
-            child: Icon(Icons.opacity),
+            padding: EdgeInsets.only(right: 12.0.w),
+            child: const Icon(Icons.opacity),
           ),
         ],
         backgroundColor: AppColors.primaryColor,
@@ -49,49 +49,47 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          Padding (
-            padding: EdgeInsets.only(top: 20.0),
-            child: SizedBox(
-                height: 40,
-                // Adjust the height as needed
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    hintText: 'Search Cryptocurrency...',
-                    prefixIcon: Icon(Icons.search),
-                    contentPadding: EdgeInsets.symmetric(vertical: 15.0),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0.h),
+              child: SizedBox(
+                  height: 40.h,
+                  // Adjust the height as needed
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: 'Search Cryptocurrency...',
+                      prefixIcon: const Icon(Icons.search),
+                      contentPadding: EdgeInsets.symmetric(vertical: 15.0.h),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0.r),
+                      ),
                     ),
-
-                  ),
-                  onChanged: (value) {
-                    // You can handle search here
-                  },
-                )
+                    onChanged: (value) {
+                      // You can handle search here
+                    },
+                  )),
             ),
-          ),
             _balanceCard(context),
             shortcutsSection(context: context),
             // Text(
             //   "Top Cryptocurrencies",
             //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             // ),
-            SizedBox(height: 16),
+            SizedBox(height: 16.h),
             FutureBuilder<List<dynamic>>(
               future: _topCryptos,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
                   return ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: snapshot.data?.length ?? 0,
                     itemBuilder: (context, index) {
@@ -102,22 +100,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 16.h),
             Text(
               "Latest News",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             FutureBuilder<List<dynamic>>(
               future: _cryptoNews,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
                   return ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: snapshot.data?.length ?? 0,
                     itemBuilder: (context, index) {
@@ -131,19 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Footer(initialIndex: 0),
+      bottomNavigationBar: const Footer(initialIndex: 0),
     );
   }
-
-
-
-
-
-
-
-
-
-
 
   // List of options for the dropdown
   final List<String> options = ['Crypto Balance', 'Fiat Balance'];
@@ -161,10 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isBalanceVisible = true;
 
   Widget _balanceCard(BuildContext context) {
-
-
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           // Dropdown select
@@ -195,9 +181,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   // Add funds logic here
                 },
-                child: Text("Add Funds"),
+                child: const Text("Add Funds"),
               ),
-
             ],
           ),
           // Balance
@@ -206,15 +191,18 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Row(
                 children: [
-
                   Text(
-                    isBalanceVisible ? balances[selectedOption] ?? '' : '*********', // Hide balance if visibility is toggled off
-                    style: TextStyle(
+                    isBalanceVisible
+                        ? balances[selectedOption] ?? ''
+                        : '*********', // Hide balance if visibility is toggled off
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   IconButton(
-                    icon: Icon(isBalanceVisible ? Icons.visibility : Icons.visibility_off),
+                    icon: Icon(isBalanceVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
                     onPressed: () {
                       setState(() {
                         isBalanceVisible = !isBalanceVisible;
@@ -224,12 +212,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               // Add Funds button aligned with the balance column
-
             ],
           ),
         ],
       ),
     );
   }
-
 }

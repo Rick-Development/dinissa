@@ -2,6 +2,7 @@ import 'package:dinissa/util/app_constant.dart';
 import 'package:dinissa/views/home_screen.dart';
 import 'package:dinissa/views/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../util/app_colors.dart';
 
@@ -69,20 +70,20 @@ void _login(BuildContext context, TextEditingController _emailController, TextEd
             //   fit: BoxFit.fill,
             // ),
             Image.asset("assets/images/undraw_walking_in_rain_vo9p 2.png",
-            height: MediaQuery.of(context).size.height * 0.30,
+            height: (MediaQuery.of(context).size.height * 0.30).h,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0.h),
               child: Text(AppName,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: 25.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0..w),
               child: Column(
                 children: [
 
@@ -93,22 +94,22 @@ void _login(BuildContext context, TextEditingController _emailController, TextEd
                     keyboardType: TextInputType.emailAddress,
                   ),
 
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 20.0.h),
                   _buildInputField(
                     controller: _password_controller,
                     labelText: 'Password',
                     prefixIcon: Icons.lock,
                     obscureText: true,
                   ),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 20.0.h),
               Container(
-                height: 40, // Adjust the height as needed
+                height: 40.h, // Adjust the height as needed
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.0),
+                  borderRadius: BorderRadius.circular(16.0.r),
                   border: Border.all(color: Colors.grey),
                 ),
                 child:Container(
-                  width: MediaQuery.of(context).size.width * 0.9, // 90% of screen width
+                  width: (MediaQuery.of(context).size.width * 0.9).w, // 90% of screen width
                   child: FloatingActionButton.extended(
                     onPressed: () {
                      _login(context, _email_controller, _password_controller);
@@ -117,13 +118,13 @@ void _login(BuildContext context, TextEditingController _emailController, TextEd
                     backgroundColor: AppColors.primaryColor, // Background color
                     foregroundColor: Colors.black, // Color of the text/icon
                     shape: RoundedRectangleBorder( // Shape of the button
-                      borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(8.0.r), // Rounded corners
                     ),
                     elevation: 5.0, // Elevation of the button
                   ),
                 ),
               ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 10.0.h),
                   GestureDetector(
                     onTap: ()=>{
                     Navigator.of(context).pushReplacement(

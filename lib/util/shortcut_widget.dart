@@ -1,31 +1,27 @@
-
 import 'package:dinissa/util/app_constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-Widget shortcutsSection({
-  required BuildContext context
-}) {
+Widget shortcutsSection({required BuildContext context}) {
   return Container(
-    margin: EdgeInsets.only(top: 16.0),
+    margin: EdgeInsets.only(top: 16.0.h),
     child: Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: EdgeInsets.symmetric(vertical: 8.0.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
+            padding: EdgeInsets.only(bottom: 12.0.h),
             child: Text(
               'Shortcuts',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 20.0.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.s,
             children: [
               InkWell(
                 onTap: () {
@@ -97,23 +93,23 @@ Widget shortcutItem({
   required BuildContext context,
 }) {
   return Container(
-    margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.035),
+    margin: EdgeInsets.symmetric(
+        horizontal: (MediaQuery.of(context).size.width * 0.035).w),
     child: Column(
       children: [
         CircleAvatar(
-          backgroundColor: AppConstants.secondaryColor,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 2,
-            child: Icon(
-              icon,
-              color: Colors.white,
-            ),
-          )
-        ),
-        SizedBox(height: 4.0),
+            backgroundColor: AppConstants.secondaryColor,
+            child: SizedBox(
+              width: (MediaQuery.of(context).size.width * 2).w,
+              child: Icon(
+                icon,
+                color: Colors.white,
+              ),
+            )),
+        SizedBox(height: 4.0.h),
         Text(
           label,
-          style: TextStyle(fontSize: 12.0),
+          style: TextStyle(fontSize: 14.0.sp, fontWeight: FontWeight.w600),
         ),
       ],
     ),
