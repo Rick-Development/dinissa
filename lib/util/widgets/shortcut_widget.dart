@@ -1,4 +1,4 @@
-import 'package:dinissa/util/app_constant.dart';
+import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -98,7 +98,7 @@ Widget shortcutItem({
     child: Column(
       children: [
         CircleAvatar(
-            backgroundColor: AppConstants.secondaryColor,
+            backgroundColor: AppColors.secondaryColor,
             child: SizedBox(
               width: (MediaQuery.of(context).size.width * 2).w,
               child: Icon(

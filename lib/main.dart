@@ -13,21 +13,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(390, 844),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "Dinissa App",
-            theme: ThemeData(
-              textTheme: GoogleFonts.interTextTheme(),
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellowAccent),
-              useMaterial3: true,
-            ),
-            initialRoute: AppRoutes.splashScreen,
-            onGenerateRoute: AppRoutes.generateRoute,
-          );
-        });
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Dinissa App",
+          theme: ThemeData(
+            textTheme: GoogleFonts.interTextTheme(),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellowAccent),
+            useMaterial3: true,
+          ),
+          initialRoute: AppRoutes.splashScreen,
+          onGenerateRoute: AppRoutes.generateRoute,
+        );
+      },
+    );
   }
 }

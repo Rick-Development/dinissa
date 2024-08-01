@@ -26,7 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const String appname = "Dinissa";
     return (AnimatedSplashScreen(
       backgroundColor: AppColors.primaryColor,
       splash: Image.asset(
@@ -34,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         height: MediaQuery.of(context).size.height * 0.5,
         width: MediaQuery.of(context).size.width * 0.5,
       ),
-      nextScreen: WelcomeScreen(),
+      nextScreen: const WelcomeScreen(),
       splashTransition: SplashTransition.rotationTransition,
       pageTransitionType: PageTransitionType.fade,
     ));

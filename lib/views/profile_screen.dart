@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../util/app_colors.dart';
-import '../util/app_constant.dart';
-import 'layouts/footer.dart';
-
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black,
       ),
-      bottomNavigationBar: Footer(initialIndex: 3),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -24,45 +22,46 @@ class ProfileScreen extends StatelessWidget {
             //   'Profile',
             //   style: TextStyle(fontSize: 20),
             // ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Your Dinnisa profile is your personal gateway to managing your account information.',
             ),
-            SizedBox(height: 16),
-            Row(
+            const SizedBox(height: 16),
+            const Row(
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('assets/images/profile.png'), // Replace with your image asset
+                  backgroundImage: AssetImage(
+                      'assets/images/profile.png'), // Replace with your image asset
                 ),
                 SizedBox(width: 20),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(width: 5),
-                      Text(
-                        'John Doe',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'johndoe@example.com',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  )
-                ),
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 5),
+                    Text(
+                      'John Doe',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'johndoe@example.com',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                )),
               ],
             ),
             // SizedBox(height: 16),
 
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'General Settings',
               style: TextStyle(fontSize: 18),
             ),
-            Divider(),
+            const Divider(),
             _buildSettingItem(
               context,
               icon: Icons.person,
@@ -113,12 +112,12 @@ class ProfileScreen extends StatelessWidget {
 
   Widget _buildSettingItem(BuildContext context,
       {required IconData icon,
-        required String title,
-        required String subtitle,
-        required VoidCallback onTap}) {
+      required String title,
+      required String subtitle,
+      required VoidCallback onTap}) {
     return ListTile(
       onTap: onTap,
-      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       leading: CircleAvatar(
         radius: 25,
         backgroundColor: Colors.white,
@@ -126,7 +125,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       title: Text(title),
       subtitle: Text(subtitle),
-      trailing: Icon(Icons.chevron_right),
+      trailing: const Icon(Icons.chevron_right),
     );
   }
 }

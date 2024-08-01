@@ -1,10 +1,6 @@
+class AppConstants {
+  static String appName = 'Dinissa';
 
-import 'package:flutter/material.dart';
-
-const AppName = 'Dinissa';
-
-class AppConstants{
-
-  static dynamic primaryColor = Color(0xFFFFE072);
-  static dynamic secondaryColor = Colors.blue;
+  // static dynamic primaryColor = Color(0xFFFFE072);
+  // static dynamic secondaryColor = Colors.blue;
 }

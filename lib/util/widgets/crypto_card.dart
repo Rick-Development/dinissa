@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CryptoCard extends StatelessWidget {
   final dynamic crypto;
 
-  CryptoCard({required this.crypto});
+  const CryptoCard({super.key, required this.crypto});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,9 @@ class CryptoCard extends StatelessWidget {
         trailing: Text(
           '${crypto['price_change_percentage_24h'].toStringAsFixed(2)}%',
           style: TextStyle(
-            color: crypto['price_change_percentage_24h'] >= 0 ? Colors.green : Colors.red,
+            color: crypto['price_change_percentage_24h'] >= 0
+                ? Colors.green
+                : Colors.red,
           ),
         ),
       ),

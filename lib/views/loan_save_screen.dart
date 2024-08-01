@@ -1,9 +1,10 @@
-import 'package:dinissa/views/layouts/footer.dart';
+
 import 'package:flutter/material.dart';
 import '../util/app_colors.dart';
-import '../util/app_constant.dart';
 
 class LoanSaveScreen extends StatelessWidget {
+  const LoanSaveScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +91,7 @@ class LoanSaveScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Footer(initialIndex: 2),
+      // bottomNavigationBar: Footer(initialIndex: 2),
     );
   }
 }

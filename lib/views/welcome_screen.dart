@@ -1,4 +1,4 @@
-import 'package:dinissa/views/login_screen.dart';
+import 'package:dinissa/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,12 +49,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   void _continue() {
     // Navigate to the next screen
-    Navigator.push(
+    Navigator.pushReplacementNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) =>
-            LoginScreen(), // Replace NextScreen() with the actual widget of your next screen
-      ),
+      AppRoutes.login,
     );
   }
 
@@ -111,10 +108,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             fontSize: 20.sp, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20.h),
                       Text(
                         _slides[index]['text']!,
-                        style: const TextStyle(fontSize: 14),
+                        style: TextStyle(fontSize: 14.sp),
                         textAlign: TextAlign.center,
                       ),
                     ],

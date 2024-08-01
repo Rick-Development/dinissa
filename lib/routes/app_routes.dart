@@ -1,18 +1,24 @@
-import 'package:dinissa/views/home_screen.dart';
+import 'package:dinissa/views/auth/login_screen.dart';
+import 'package:dinissa/views/auth/signup_screen.dart';
+import 'package:dinissa/views/main_screen/main_screen.dart';
+import 'package:dinissa/views/main_screen/pages/home_screen.dart';
 import 'package:dinissa/views/loan_save_screen.dart';
 import 'package:dinissa/views/p2p_screen.dart';
 import 'package:dinissa/views/profile_screen.dart';
 import 'package:dinissa/views/splash_screen.dart';
-import 'package:dinissa/views/buy_sell_screen.dart'; // Add this
-import 'package:dinissa/views/swap_screen.dart'; // Add this
-import 'package:dinissa/views/wallet_screen.dart'; // Add this
-import 'package:dinissa/views/discover_screen.dart'; // Add this
+import 'package:dinissa/views/main_screen/pages/buy_sell_screen.dart'; // Add this
+import 'package:dinissa/views/main_screen/pages/swap_screen.dart'; // Add this
+import 'package:dinissa/views/main_screen/pages/wallet_screen.dart'; // Add this
+import 'package:dinissa/views/main_screen/pages/discover_screen.dart'; // Add this
 import 'package:dinissa/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
   static const String welcome = '/welcome';
+  static const String login = '/login';
+  static const String signUp = '/signup';
+  static const String mainScreen = '/main_screen';
   static const String home = '/home';
   static const String p2p = '/p2p';
   static const String loanSave = '/loansave';
@@ -28,23 +34,32 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case welcome:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case login:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case signUp:
+        return MaterialPageRoute(builder: (_) => const SignupScreen());
+      case mainScreen:
+        return MaterialPageRoute(builder: (_) => const MainScreen());
       case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case p2p:
-        return MaterialPageRoute(builder: (_) => P2PScreen());
+        return MaterialPageRoute(builder: (_) => const P2PScreen());
       case loanSave:
-        return MaterialPageRoute(builder: (_) => LoanSaveScreen());
+        return MaterialPageRoute(builder: (_) => const LoanSaveScreen());
       case profile:
-        return MaterialPageRoute(builder: (_) => ProfileScreen());
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case buySell:
-        return MaterialPageRoute(builder: (_) => BuySellScreen()); // Add this
+        return MaterialPageRoute(
+            builder: (_) => const BuySellScreen()); // Add this
       case swap:
-        return MaterialPageRoute(builder: (_) => SwapScreen()); // Add this
+        return MaterialPageRoute(
+            builder: (_) => const SwapScreen()); // Add this
       case wallet:
         return MaterialPageRoute(
             builder: (_) => const WalletScreen()); // Add this
       case discover:
-        return MaterialPageRoute(builder: (_) => DiscoverScreen()); // Add this
+        return MaterialPageRoute(
+            builder: (_) => const DiscoverScreen()); // Add this
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }

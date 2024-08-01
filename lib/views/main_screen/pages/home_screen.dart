@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'package:dinissa/views/layouts/footer.dart';
-
-import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../util/crypto_card.dart';
-import '../util/crypto_service.dart';
-import '../util/news_card.dart';
-import '../util/shortcut_widget.dart';
+
+import 'package:dinissa/services/api_service.dart';
+import 'package:dinissa/util/app_colors.dart';
+import 'package:dinissa/util/widgets/crypto_card.dart';
+import 'package:dinissa/util/widgets/news_card.dart';
+import 'package:dinissa/util/widgets/shortcut_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,20 +15,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ApiService _apiService = ApiService();
   late Future<List<dynamic>> _topCryptos;
   late Future<List<dynamic>> _cryptoNews;
 
   @override
   void initState() {
     super.initState();
-    _topCryptos = CryptoService.fetchTopCryptos();
-    _cryptoNews = CryptoService.fetchCryptoNews();
+    _topCryptos = _apiService.fetchTopCryptos();
+    _cryptoNews = _apiService.fetchCryptoNews();
   }
 
   @override
   Widget build(BuildContext context) {
-    _topCryptos = CryptoService.fetchTopCryptos();
-    _cryptoNews = CryptoService.fetchCryptoNews();
+    _topCryptos = _apiService.fetchTopCryptos();
+    _cryptoNews = _apiService.fetchCryptoNews();
     TextEditingController searchController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
@@ -129,7 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const Footer(initialIndex: 0),
     );
   }
 
