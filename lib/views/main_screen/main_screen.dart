@@ -83,11 +83,11 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.attach_money),
-            label: 'Buy/Sell',
+            label: 'Trade',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.swap_horiz),
-            label: 'Swap',
+            label: 'Finance',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_wallet),
