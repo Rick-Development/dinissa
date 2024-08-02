@@ -1,9 +1,9 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dinissa/util/app_colors.dart';
-import 'package:dinissa/views/main_screen/pages/buy_sell_screen.dart';
+import 'package:dinissa/views/main_screen/pages/trade_screen.dart';
 import 'package:dinissa/views/main_screen/pages/discover_screen.dart';
 import 'package:dinissa/views/main_screen/pages/home_screen.dart';
-import 'package:dinissa/views/main_screen/pages/swap_screen.dart';
+import 'package:dinissa/views/main_screen/pages/finance_screen.dart';
 import 'package:dinissa/views/main_screen/pages/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,8 +21,8 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final List _pages = [
     const HomeScreen(),
-    const BuySellScreen(),
-    const SwapScreen(),
+    const TradeScreen(),
+    const FinanceScreen(),
     const WalletScreen(),
     const DiscoverScreen()
   ];

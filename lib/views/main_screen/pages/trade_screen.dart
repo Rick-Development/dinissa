@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BuySellScreen extends StatelessWidget {
-  const BuySellScreen({super.key});
+class TradeScreen extends StatelessWidget {
+  const TradeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

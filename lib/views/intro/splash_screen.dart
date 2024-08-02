@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'package:dinissa/util/app_colors.dart';
-import 'package:dinissa/views/welcome_screen.dart';
+import 'package:dinissa/views/intro/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

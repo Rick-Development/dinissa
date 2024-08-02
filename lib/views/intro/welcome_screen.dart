@@ -137,30 +137,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               }),
             ),
             SizedBox(height: 20.h),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all<Color>(Colors.yellow),
-                      ),
-                      onPressed: _currentIndex != _slides.length - 1
-                          ? _next
-                          : _continue,
-                      child: Text(
-                        _currentIndex != _slides.length - 1
-                            ? 'Next'
-                            : 'Continue',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.only(bottom: 10.0.h),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              WidgetStateProperty.all<Color>(Colors.yellow),
+                        ),
+                        onPressed: _currentIndex != _slides.length - 1
+                            ? _next
+                            : _continue,
+                        child: Text(
+                          _currentIndex != _slides.length - 1
+                              ? 'Next'
+                              : 'Continue',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

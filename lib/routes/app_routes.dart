@@ -5,12 +5,12 @@ import 'package:dinissa/views/main_screen/pages/home_screen.dart';
 import 'package:dinissa/views/loan_save_screen.dart';
 import 'package:dinissa/views/p2p_screen.dart';
 import 'package:dinissa/views/profile_screen.dart';
-import 'package:dinissa/views/splash_screen.dart';
-import 'package:dinissa/views/main_screen/pages/buy_sell_screen.dart'; // Add this
-import 'package:dinissa/views/main_screen/pages/swap_screen.dart'; // Add this
+import 'package:dinissa/views/intro/splash_screen.dart';
+import 'package:dinissa/views/main_screen/pages/trade_screen.dart'; // Add this
+import 'package:dinissa/views/main_screen/pages/finance_screen.dart'; // Add this
 import 'package:dinissa/views/main_screen/pages/wallet_screen.dart'; // Add this
 import 'package:dinissa/views/main_screen/pages/discover_screen.dart'; // Add this
-import 'package:dinissa/views/welcome_screen.dart';
+import 'package:dinissa/views/intro/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -50,10 +50,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case buySell:
         return MaterialPageRoute(
-            builder: (_) => const BuySellScreen()); // Add this
+            builder: (_) => const TradeScreen()); // Add this
       case swap:
         return MaterialPageRoute(
-            builder: (_) => const SwapScreen()); // Add this
+            builder: (_) => const FinanceScreen()); // Add this
       case wallet:
         return MaterialPageRoute(
             builder: (_) => const WalletScreen()); // Add this
