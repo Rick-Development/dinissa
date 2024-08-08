@@ -3,6 +3,7 @@ import 'package:dinissa/views/auth/signup_screen.dart';
 import 'package:dinissa/views/main_screen/main_screen.dart';
 import 'package:dinissa/views/main_screen/pages/home_screen.dart';
 import 'package:dinissa/views/loan_save_screen.dart';
+import 'package:dinissa/views/main_screen/pages/loan_application_page.dart';
 import 'package:dinissa/views/p2p_screen.dart';
 import 'package:dinissa/views/profile_screen.dart';
 import 'package:dinissa/views/intro/splash_screen.dart';
@@ -27,6 +28,8 @@ class AppRoutes {
   static const String swap = '/swap'; // Add this
   static const String wallet = '/wallet'; // Add this
   static const String discover = '/discover'; // Add this
+  static const String loanApplication = "loan_application_page";
+  static const String loanSaving = "loan_save";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -60,8 +63,14 @@ class AppRoutes {
       case discover:
         return MaterialPageRoute(
             builder: (_) => const DiscoverScreen()); // Add this
+      case loanApplication:
+        return MaterialPageRoute(
+            builder: (_) =>  LoanApplicationPage()); // Add this
+      case loanSaving:
+        return MaterialPageRoute(
+            builder: (_) =>  const LoanSaveScreen()); // Add this
       default:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainScreen());
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dinissa/routes/app_routes.dart';
+import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,25 +17,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   final List<Map<String, String>> _slides = [
     {
-      'image': 'assets/images/investor.svg',
+      'image': 'assets/images/undraw_savings_re_eq4w.svg',
       'title': "Secure your future with smart investments and savings.",
       'text':
           'Plant the seeds of financial security today for a flourishing tomorrow. Explore our tailored options to grow your wealth steadily while safeguarding your future',
     },
     {
-      'image': 'assets/images/team.svg',
+      'image': 'assets/images/undraw_online_banking_re_kwqh.svg',
       'title': 'Fund your Wallet',
       'text':
           'lets you quickly and securely add money to your digital wallet using bank transfers, cards, or direct deposits. Manage your finances effortlessly and access your funds instantly',
     },
     {
-      'image': 'assets/images/success.svg',
+      'image': 'assets/images/undraw_fast_loading_re_8oi3.svg',
       'title': 'Instant Loans',
       'text':
           'Access quick and convenient loans with our fintech app. Apply in minutes and receive funds directly to your account. Enjoy competitive rates, flexible repayment options, and a hassle-free experience.',
     },
     {
-      'image': 'assets/images/savings.svg',
+      'image': 'assets/images/undraw_online_banking_re_kwqh.svg',
       'title': ' Connect, Transact, Anywhere.',
       'text':
           'Our platform empowers you to engage in seamless transactions and interactions across the globe, eliminating the need for intermediaries. Experience the freedom of direct peer-to-peer engagement, anytime, anywhere.',
@@ -147,7 +148,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
-                              WidgetStateProperty.all<Color>(Colors.yellow),
+                              WidgetStateProperty.all<Color>(AppColors.primaryColor),
                         ),
                         onPressed: _currentIndex != _slides.length - 1
                             ? _next

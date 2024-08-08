@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDoJIOQtzdjQD7I9BQcl1H4B_Gr7rt9eDI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>253747862581</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rick.dinissa.dinissa</string>
+	<key>PROJECT_ID</key>
+	<string>dinissa-4a343</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dinissa-4a343.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:253747862581:ios:1f01d1af690548e477e57c</string>
+</dict>
+</plist>

@@ -30,7 +30,7 @@ Widget shortcutsSection({required BuildContext context}) {
                 child: shortcutItem(
                   context: context,
                   icon: Icons.mobile_screen_share,
-                  label: 'Send',
+                  label: 'To Fiat',
                   iconBackground: Colors.grey,
                 ),
               ),
@@ -40,8 +40,8 @@ Widget shortcutsSection({required BuildContext context}) {
                 },
                 child: shortcutItem(
                   context: context,
-                  icon: Icons.wifi,
-                  label: 'Receive',
+                  icon: Icons.warehouse_outlined,
+                  label: 'To Crypto',
                   iconBackground: Colors.grey,
                 ),
               ),
@@ -51,8 +51,8 @@ Widget shortcutsSection({required BuildContext context}) {
                 },
                 child: shortcutItem(
                   context: context,
-                  icon: Icons.bolt,
-                  label: 'Swap',
+                  icon: Icons.swap_horiz,
+                  label: 'P2P',
                   iconBackground: Colors.grey,
                 ),
               ),
@@ -73,7 +73,7 @@ Widget shortcutsSection({required BuildContext context}) {
                 },
                 child: shortcutItem(
                   context: context,
-                  icon: Icons.credit_card,
+                  icon: Icons.app_blocking,
                   label: 'Sell',
                   iconBackground: Colors.grey,
                 ),

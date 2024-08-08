@@ -1,7 +1,15 @@
+import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class WalletScreen extends StatelessWidget {
+class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
+
+  @override
+  _WalletScreenState createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  bool _isBalanceHidden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -16,52 +24,94 @@ class WalletScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 400,
+              height: 130,
               decoration: BoxDecoration(
-                color: Colors.yellow.shade200,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12),
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFFfebd59),
+                    Color(0xFFff8465),
+                    Color(0xFFe75586),
+                    Color(0xFFa347a4),
+                    Color(0xFF004aac),
+                  ],
+                ),
               ),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text(
+                      'Wallet Balance',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    const SizedBox(height: 15),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("Total Assets"),
+                        Row(
+                          children: _isBalanceHidden
+                              ? const [
+                            Icon(Icons.circle, size: 10, color: Colors.white),
+                            Icon(Icons.circle, size: 10, color: Colors.white),
+                            Icon(Icons.circle, size: 10, color: Colors.white),
+                          ]
+                              : const [
+                            Text(
+                              ' ₦1,234.56',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                         IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.visibility_outlined),
+                          onPressed: () {
+                            setState(() {
+                              _isBalanceHidden = !_isBalanceHidden;
+                            });
+                          },
+                          icon: Icon(
+                            _isBalanceHidden
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        const Text("0.40"),
-                        TextButton(onPressed: () {}, child: const Text("USD"))
-                      ],
-                    )
                   ],
                 ),
               ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            Container(
-              child: const Column(
-                children: [
-                  Row(),
-                  Row(),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text('Fund wallet', style: TextStyle(fontSize: 16)),
+                  Icon(Icons.arrow_forward),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
+            const SizedBox(height: 20),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Wallet Transactions', style: TextStyle(fontSize: 16)),
+                Text('Sell All', style: TextStyle(fontSize: 16,color: AppColors.secondaryColor)),
+              ],
             ),
-            const Text("My Accounts"),
-            const SizedBox(
-              height: 10,
+            const SizedBox(height: 20),
+            const Center(
+              child: Text('No Transaction Found', style: TextStyle(color: Colors.grey)),
             ),
           ],
         ),
@@ -69,3 +119,4 @@ class WalletScreen extends StatelessWidget {
     );
   }
 }
+

@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dinissa/util/app_colors.dart';
+import 'package:dinissa/views/loan_save_screen.dart';
 import 'package:dinissa/views/main_screen/pages/trade_screen.dart';
 import 'package:dinissa/views/main_screen/pages/discover_screen.dart';
 import 'package:dinissa/views/main_screen/pages/home_screen.dart';
@@ -22,7 +23,8 @@ class _MainScreenState extends State<MainScreen> {
   final List _pages = [
     const HomeScreen(),
     const TradeScreen(),
-    const FinanceScreen(),
+     const LoanSaveScreen(),
+    // const FinanceScreen(),
     const WalletScreen(),
     const DiscoverScreen()
   ];
@@ -31,6 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   void _updateSelectedBottomNavIndex(int index) {
     setState(() {
       _selectedIndex = index;
+      print("Selected Index: $_selectedIndex");
     });
   }
 
@@ -43,9 +46,15 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> checkConnectivity() async {
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
-        setState(() => isConnected = false);
+        setState(() {
+          isConnected = false;
+          print("No Internet Connection");
+        });
       } else {
-        setState(() => isConnected = true);
+        setState(() {
+          isConnected = true;
+          print("Connected to the Internet");
+        });
       }
     });
   }
@@ -56,17 +65,17 @@ class _MainScreenState extends State<MainScreen> {
       body: isConnected
           ? _pages[_selectedIndex]
           : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Icon(Icons.signal_wifi_off, size: 50),
-                  Text(
-                    "No Internet Connection",
-                    style: TextStyle(fontSize: 24.sp),
-                  ),
-                ],
-              ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Icon(Icons.signal_wifi_off, size: 50),
+            Text(
+              "No Internet Connection",
+              style: TextStyle(fontSize: 24.sp),
             ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
@@ -75,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           _updateSelectedBottomNavIndex(index);
-        }, // Inactive icon color
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

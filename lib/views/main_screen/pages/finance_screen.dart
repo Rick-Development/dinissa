@@ -1,5 +1,9 @@
+import 'package:dinissa/util/app_colors.dart';
+import 'package:dinissa/util/app_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'loan_application_page.dart';
 
 class FinanceScreen extends StatelessWidget {
   const FinanceScreen({super.key});
@@ -18,10 +22,10 @@ class FinanceScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body:  TabBarView(
           children: [
             SavingsTag(),
-            LoanTab(),
+            LoanApplicationPage(),
           ],
         ),
       ),
@@ -42,7 +46,7 @@ class SavingsTag extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.blue[100],
+              color: AppColors.secondaryColor,
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -50,12 +54,16 @@ class SavingsTag extends StatelessWidget {
               children: [
                 const Text(
                   'Earn Interest on maturity',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(height: 8.0),
                 const Text(
                   'Start with as little as ₦200',
-                  style: TextStyle(fontSize: 16.0),
+                  style: TextStyle(fontSize: 16.0,
+                    color: Colors.white,),
                 ),
                 const SizedBox(height: 8.0),
                 ElevatedButton(
@@ -106,22 +114,22 @@ class SavingsTag extends StatelessWidget {
                 title: 'Wallet',
                 description:
                     'You can deposit this amount in OWealth and earn daily interests.',
-                amount: '₦X,XXX',
-                color: Colors.green[100],
+                amount: '₦0.00',
+                color: AppColors.primaryColor700,
               ),
               SavingsCard(
                 icon: const Icon(Icons.account_balance_wallet),
                 title: 'OWealth',
                 description:
                     'Your daily returns. You can withdraw at any time.',
-                amount: '₦X,XXX',
-                color: Colors.purple[100],
+                amount: '₦0.00',
+                color: AppColors.primaryColor100,
               ),
               SavingsCard(
                 icon: const Icon(Icons.account_balance_wallet),
                 title: 'Targets',
                 description: 'Plans: 1',
-                amount: '₦X,XXX',
+                amount: '₦0.00',
                 color: Colors.blue[100],
               ),
               SavingsCard(
