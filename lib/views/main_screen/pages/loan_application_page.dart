@@ -1,7 +1,6 @@
 import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../loan_save_screen.dart';
 import 'business_user_details_page.dart';
 
 class LoanApplicationPage extends StatelessWidget {
@@ -10,6 +9,8 @@ class LoanApplicationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Loan Application'),
+        leading: Image.asset('ic_back.png'),
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
