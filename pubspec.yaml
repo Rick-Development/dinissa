@@ -56,14 +56,20 @@ flutter:
     - assets/images/
 
   # Uncomment and customize the following lines to add custom fonts:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 500
+    - family: Gordita
+      fonts:
+        - asset: assets/fonts/Gordita-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Gordita-Medium.otf
+          weight: 600
+        - asset: assets/fonts/Gordita-Regular.otf
+          weight: 500

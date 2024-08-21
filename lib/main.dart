@@ -1,4 +1,5 @@
 import 'package:dinissa/routes/app_routes.dart';
+import 'package:dinissa/theme/theme_data.dart';
 import 'package:dinissa/util/app_colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,15 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: "Dinissa App",
+          /*
           theme: ThemeData(
             textTheme: GoogleFonts.interTextTheme(),
             colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
             useMaterial3: true,
           ),
+           */
+          theme: getLightTheme(),
+          themeMode: ThemeMode.light,
           initialRoute: AppRoutes.splashScreen,
           onGenerateRoute: AppRoutes.generateRoute,
         );
