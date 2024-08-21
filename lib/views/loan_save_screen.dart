@@ -39,7 +39,7 @@ class LoanSaveScreen extends StatelessWidget {
                   onTap: () {
                     // Navigate to savings account details or actions
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                       FinanceScreen() ));
+                       const FinanceScreen() ));
                   },
                 ),
               ),
@@ -57,7 +57,7 @@ class LoanSaveScreen extends StatelessWidget {
                   onTap: () {
                     // Navigate to loan application process
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                        LoanApplicationPage() ));
+                        const LoanApplicationPage() ));
                   },
                 ),
               ),

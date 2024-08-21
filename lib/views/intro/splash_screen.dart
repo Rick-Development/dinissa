@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'package:dinissa/util/app_colors.dart';
@@ -14,19 +15,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
-    super.initState();
-    Future.delayed(
-      const Duration(seconds: 5),
-      () {
-        // Navigate to main screen
-      },
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return (AnimatedSplashScreen(
+    return AnimatedSplashScreen(
       backgroundColor: AppColors.primaryColor,
       splash: Image.asset(
         'assets/images/logo.png',
@@ -36,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       nextScreen: const WelcomeScreen(),
       splashTransition: SplashTransition.rotationTransition,
       pageTransitionType: PageTransitionType.fade,
-    ));
+      duration: 5000, // 5 seconds duration for splash screen
+    );
   }
 }

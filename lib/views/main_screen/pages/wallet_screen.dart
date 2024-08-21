@@ -17,6 +17,7 @@ class _WalletScreenState extends State<WalletScreen> {
       appBar: AppBar(
         title: const Text('Wallet'),
         automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primaryColor,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8),
@@ -43,7 +44,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Wallet Balance',
+                      'Total Assets Balance',
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                     const SizedBox(height: 15),
@@ -93,9 +94,9 @@ class _WalletScreenState extends State<WalletScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text('Fund wallet', style: TextStyle(fontSize: 16)),
                   Icon(Icons.arrow_forward),
                 ],

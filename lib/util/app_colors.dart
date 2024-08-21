@@ -43,5 +43,8 @@ class AppColors {
   static const secondaryTintColor400 = Color(0xFFa6acdc); // #a6acdc
   static const secondaryTintColor500 = Color(0xFFc4c7e8); // #c4c7e8
   static const secondaryTintColor600 = Color(0xFFe1e3f4); // #e1e3f4
-  static const secondaryTintColor700 = Color(0xFFFFFFFF); // #ffffff
+  static const secondaryTintColor700 = Color(0xFFFFFFFF); // #ffffffolor
+
+
+  static const danger = Colors.red;
 }

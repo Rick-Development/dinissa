@@ -1,4 +1,7 @@
+import 'package:dinissa/util/app_colors.dart';
+import 'package:dinissa/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -8,114 +11,88 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF01325d), // Dark blue background color
-        elevation: 0,
-        title: const Text('My Account'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.jpg'), // Replace with the actual image
-            ),
-          ),
-        ],
+        backgroundColor: AppColors.primaryColor,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
+          // Profile Section
           Container(
-            color: const Color(0xFF01325d), // Dark blue background color
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            color: AppColors.primaryColor, // Blue background color
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            width: MediaQuery.of(context).size.width * 4,
+            child: const Column(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Text(
-                          'Show Dashboard Account Balances',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Switch(
-                          value: true,
-                          onChanged: (value) {},
-                          activeColor: Colors.orange,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Enable Notifications',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                        const SizedBox(width: 10),
-                        Switch(
-                          value: false,
-                          onChanged: (value) {},
-                          activeColor: Colors.orange,
-                        ),
-                      ],
-                    ),
-                  ],
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: NetworkImage('https://marketplace.canva.com/EAFXS8-cvyQ/1/0/1600w/canva-brown-and-light-brown%2C-circle-framed-instagram-profile-picture-2PE9qJLmPac.jpg'), // Replace with the actual image
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Nwachukwu Patrick',
+                  style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'nwachukwupatrick06@gmail.com',
+                  style: TextStyle(color: Colors.black, fontSize: 14),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  '+2348111218116',
+                  style: TextStyle(color: Colors.black, fontSize: 14),
                 ),
               ],
             ),
           ),
+          // List Items
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               children: [
                 _buildListTile(
-                  icon: Icons.note_add_outlined,
-                  title: 'Loan Apply',
+                  context: context,
+                  icon: Icons.person,
+                  title: 'Account',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.payment_outlined,
-                  title: 'Apply for Topup',
+                  context: context,
+                  icon: Icons.account_balance,
+                  title: 'History',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.account_balance_wallet_outlined,
-                  title: 'Liquidation',
+                  context: context,
+                  icon: Icons.notifications,
+                  title: 'Notifications',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.article_outlined,
-                  title: 'Letter of indebtedness',
+                  context: context,
+                  icon: Icons.security,
+                  title: 'Security',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.article_outlined,
-                  title: 'Letter of non-indebtedness',
+                  context: context,
+                  icon: Icons.help_outline,
+                  title: 'Help and Support',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.payment_outlined,
-                  title: 'Make repayments manually',
+                  context: context,
+                  icon: Icons.description,
+                  title: 'Terms and Conditions',
+                  screen: const AccountScreen(),
                 ),
                 _buildListTile(
-                  icon: Icons.support_agent_outlined,
-                  title: 'Contact Support',
-                ),
-                _buildListTile(
-                  icon: Icons.lock_reset_outlined,
-                  title: 'Reset Password',
+                  context: context,
+                  icon: Icons.logout,
+                  title: 'Logout',
+                  screen: const AccountScreen(),
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.logout),
-              label: const Text('Log Out'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF01325d), // Dark blue color
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
             ),
           ),
         ],
@@ -123,7 +100,7 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildListTile({required IconData icon, required String title}) {
+  Widget _buildListTile({ required BuildContext context, required IconData icon, required String title, required Widget screen}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
@@ -132,10 +109,38 @@ class AccountScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        leading: Icon(icon, color: Colors.orange),
+        leading: Icon(icon, color: const Color(0xFF366FCB)), // Blue color for icons
         title: Text(title),
-        onTap: () {},
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.black54),
+    onTap: () => {
+          handleNavigation(title, context, screen)
+  },
       ),
     );
   }
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear(); // Clear all data or remove specific keys
+  }
+
+
+
+// Function to handle navigation based on title
+  void handleNavigation(String title, BuildContext context, Widget screen) async {
+    if (title == "Logout") {
+      await logout(); // Clear session data
+      if (!context.mounted) return; // Ensure the widget is still in the tree
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()), // Navigate to LoginScreen
+            (Route<dynamic> route) => false, // Remove all previous routes
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => screen), // Navigate to the provided screen
+      );
+    }
+  }
+
 }

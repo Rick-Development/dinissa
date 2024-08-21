@@ -2,18 +2,20 @@ import 'package:dinissa/views/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoanApprovedPage extends StatelessWidget {
+  const LoanApprovedPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Loan Approved'),
+        title: const Text('Loan Approved'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            const Center(
               child: Column(
                 children: [
                   Icon(
@@ -33,14 +35,14 @@ class LoanApprovedPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -79,44 +81,44 @@ class LoanApprovedPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Checkbox(
                   value: true,
                   onChanged: (newValue) {},
                 ),
-                Text('I agree to the Terms & Conditions and Policy.'),
+                const Text('I agree to the Terms & Conditions and Policy.'),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                        MainScreen() ));
+                        const DashboardScreen() ));
 
                   },
-                  child: Text('Accept'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding:
-                    EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   ),
+                  child: const Text('Accept'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>
-                        MainScreen() ));
+                        const DashboardScreen() ));
                   },
-                  child: Text('Decline'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     padding:
-                    EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   ),
+                  child: const Text('Decline'),
                 ),
               ],
             ),
@@ -131,7 +133,7 @@ class TransactionDetailRow extends StatelessWidget {
   final String label;
   final String value;
 
-  TransactionDetailRow({required this.label, required this.value});
+  const TransactionDetailRow({super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -142,11 +144,11 @@ class TransactionDetailRow extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           Text(
             value,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ],
       ),

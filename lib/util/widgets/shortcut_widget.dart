@@ -1,6 +1,7 @@
 import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 
 Widget shortcutsSection({required BuildContext context}) {
   return Container(
@@ -37,10 +38,15 @@ Widget shortcutsSection({required BuildContext context}) {
               InkWell(
                 onTap: () {
                   // Handle onTap
+                  const GetSnackBar(
+                    title: "Failed",
+                    message: "Your login failed",
+                    snackPosition: SnackPosition.BOTTOM,
+                  );
                 },
                 child: shortcutItem(
                   context: context,
-                  icon: Icons.warehouse_outlined,
+                  icon: Icons.telegram,
                   label: 'To Crypto',
                   iconBackground: Colors.grey,
                 ),

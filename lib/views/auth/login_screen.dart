@@ -1,8 +1,8 @@
-// lib/views/auth/login_screen.dart
 import 'package:dinissa/controllers/auth_controller.dart';
 import 'package:dinissa/views/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../util/app_colors.dart';
 
@@ -29,28 +29,22 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.secondaryColor,
         foregroundColor: Colors.black,
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         color: AppColors.secondaryColor,
         child: Column(
           children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.12,
+            ),
             Image.asset(
-              "assets/images/undraw_walking_in_rain_vo9p 2.png",
+              "assets/images/walker.png",
               height: (MediaQuery.of(context).size.height * 0.30).h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h),
-              child: Text(
-                'Dinissa', // Replace with your app name
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.sp,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            SizedBox(height: 20.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0.w),
               child: Column(
@@ -70,41 +64,46 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 20.0.h),
                   Container(
-                    height: 40.h,
+                    height: 50.h,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.0.r),
-                      border: Border.all(color: Colors.grey),
+                      color: AppColors.primaryColor,
                     ),
-                    child: SizedBox(
-                      width: (MediaQuery.of(context).size.width * 0.9).w,
-                      child: FloatingActionButton.extended(
-                        onPressed: () {
-                          _authController.login(
-                            context,
-                            _emailController,
-                            _passwordController,
-                          );
-                        },
-                        label: const Text('Login'),
-                        backgroundColor: AppColors.primaryColor,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0.r),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _authController.login(
+                          context,
+                          _emailController,
+                          _passwordController,
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0.r),
+                          ),
                         ),
-                        elevation: 5.0,
+                      ),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(height: 10.0.h),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => const SignupScreen()),
-                    ),
+                    onTap: () => Get.off(const SignupScreen()), // Using Get for navigation
                     child: const Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("New User ? ", style: TextStyle(color: Colors.white)),
+                        Text("New User? ", style: TextStyle(color: Colors.white)),
                         Text("Signup", style: TextStyle(color: AppColors.primaryColor)),
                       ],
                     ),
@@ -119,14 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildInputField({
-  required String labelText,
-  required IconData prefixIcon,
+    required String labelText,
+    required IconData prefixIcon,
     bool obscureText = false,
     required TextEditingController controller,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Container(
-      height: 40,
+      height: 50.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0.r),
         border: Border.all(color: Colors.grey),

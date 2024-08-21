@@ -1,28 +1,27 @@
 {
   "project_info": {
-    "project_number": "253747862581",
-    "project_id": "dinissa-4a343",
-    "storage_bucket": "dinissa-4a343.appspot.com"
+    "project_number": "179143899005",
+    "firebase_url": "https://dinissa-5d375-default-rtdb.firebaseio.com",
+    "project_id": "dinissa-5d375",
+    "storage_bucket": "dinissa-5d375.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:253747862581:android:2930ffe35df5a51777e57c",
+        "mobilesdk_app_id": "1:179143899005:android:0f77f17d7be7196855fe14",
         "android_client_info": {
-          "package_name": "com.rick.dinissa.dinissa"
+          "package_name": "com.rickdeprogrammer.dinissa"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDYyIpK9pol5k7jioGHHdHSy1BffQn7234"
+          "current_key": "AIzaSyBWeiCOIopUX5RxTzPw_TT2pXP1XRdqvec"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

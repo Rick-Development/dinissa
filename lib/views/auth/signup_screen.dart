@@ -16,6 +16,9 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _cpasswordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final AuthController _authController = AuthController();
 
   @override
@@ -31,28 +34,60 @@ class _SignupScreenState extends State<SignupScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black,
+        title: Image.asset('assets/images/Sun2.png'),
+        automaticallyImplyLeading: false,
       ),
-      body: Container(
+      body:
+        // Image.asset('assets/images/Sun2.png'),
+        Container(
         color: AppColors.secondaryColor,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 35.h),
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             Container(
+              width: MediaQuery.of(context).size.width * 1.5, // 1.5 times the screen width
+              child: Image.asset(
+                'assets/images/Sun2.png',
+                fit: BoxFit.cover, // Or BoxFit.fill, depending on your needs
+              ),
+            ),
+            SizedBox(height:MediaQuery.of(context).size.height * .15),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0.w),
               child: Column(
                 children: [
+                  // Full anme
+                  _buildInputField(
+                    controller: _nameController,
+                    labelText: 'Your name',
+                    prefixIcon: Icons.person,
+                    keyboardType: TextInputType.text,
+                  ),
+                  SizedBox(height: 20.0.h), _buildInputField(
+                    controller: _phoneController,
+                    labelText: 'Your phone',
+                    prefixIcon: Icons.call,
+                    keyboardType: TextInputType.number,
+                  ),
+                  SizedBox(height: 20.0.h),
+                  // email
                   _buildInputField(
                     controller: _emailController,
-                    labelText: 'Username',
-                    prefixIcon: Icons.person,
+                    labelText: 'Your Email',
+                    prefixIcon: Icons.mail,
                     keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(height: 20.0.h),
                   _buildInputField(
                     controller: _passwordController,
-                    labelText: 'Password',
+                    labelText: 'Your Password',
+                    prefixIcon: Icons.lock,
+                    obscureText: true,
+                  ), SizedBox(height: 20.0.h),
+                  _buildInputField(
+                    controller: _cpasswordController,
+                    labelText: 'Confirm Password',
                     prefixIcon: Icons.lock,
                     obscureText: true,
                   ),
@@ -71,6 +106,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             context,
                             _emailController,
                             _passwordController,
+                            _cpasswordController,
+                            _phoneController,
+                            _nameController
                           );
                         },
                         label: const Text('SignUp'),
@@ -102,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ],
         ),
-      ),
+      )
     );
   }
 
@@ -114,7 +152,7 @@ class _SignupScreenState extends State<SignupScreen> {
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Container(
-      height: 40,
+      height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0.r),
         border: Border.all(color: Colors.grey),
@@ -126,7 +164,7 @@ class _SignupScreenState extends State<SignupScreen> {
           color: Colors.white,
         ),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 8.h),
+          contentPadding: EdgeInsets.symmetric(vertical: 1.h),
           labelText: labelText,
           labelStyle: const TextStyle(color: Colors.white),
           prefixIcon: Icon(prefixIcon, color: Colors.white),
