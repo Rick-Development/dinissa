@@ -23,6 +23,7 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
   late LoanApplicationController controller;
   final _formKey = GlobalKey<FormState>();
   final _tenureNode = FocusNode();
+  final _purposeNode = FocusNode();
 
   @override
   void initState() {
@@ -38,6 +39,7 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 42.0),
               child: Form(
                   key: _formKey,
                   child: Column(
@@ -96,6 +98,22 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
                             );
                           },
                           validator: controller.validTenure,
+                          onTextChanged: (value) {},
+                        ),
+                        CustomDropTextInputField(
+                          controller: controller.purposeController,
+                          node: _purposeNode,
+                          hint: 'Choose Loan Purpose',
+                          label: 'Loan Purpose',
+                          onTouched: () {
+                            showLoanPurposeBottomSheet(
+                                context: context,
+                                onSelected: (value) {
+                                  controller.purposeController.text = value;
+                                }
+                            );
+                          },
+                          validator: controller.validPurpose,
                           onTextChanged: (value) {},
                         ),
                         UsableTextInputField(
@@ -192,7 +210,7 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
     _tenureNode.unfocus();
     customBottomSheetWidget(
         context: context,
-        initialHeight: 0.25,
+        initialHeight: 0.2,
         maxHeight: 0.3,
         child: SizedBox(
             width: double.infinity,
@@ -219,6 +237,48 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
                           )
                       )
                   ))
+                ]
+            )
+        )
+    );
+  }
+
+  void showLoanPurposeBottomSheet({
+    required BuildContext context,
+    required Function(String value) onSelected
+  }) {
+    final purposes = ['School fees','Health care', 'Travelling expenses'];
+
+    _purposeNode.unfocus();
+    customBottomSheetWidget(
+        context: context,
+        initialHeight: 0.2,
+        maxHeight: 0.3,
+        child: SizedBox(
+            width: double.infinity,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 14.0),
+                  ...purposes.map((tenure) =>
+                      Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10.0),
+                          child: UsableClickWidget(
+                              onClick: () {
+                                Navigator.pop(context);
+                                onSelected(tenure);
+                              },
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: UsableTextWidget(
+                                    label: tenure,
+                                    weight: FontWeight.w400,
+                                    textSize: 14,
+                                    textColor: Theme.of(context).colorScheme.primary
+                                ),
+                              )
+                          )
+                      ))
                 ]
             )
         )

@@ -59,7 +59,7 @@ class DocumentUploadPage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                        const DocumentUploadPage() ));
+                        const LoanApprovedPage() ));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryColor400,

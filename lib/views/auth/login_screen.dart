@@ -33,87 +33,87 @@ class _LoginScreenState extends State<LoginScreen> {
         foregroundColor: Colors.black,
         automaticallyImplyLeading: false,
       ),
-      body: Container(
-        color: AppColors.secondaryColor,
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.12,
-            ),
-            Image.asset(
-              "assets/images/walker.png",
-              height: (MediaQuery.of(context).size.height * 0.30).h,
-            ),
-            SizedBox(height: 20.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-              child: Column(
-                children: [
-                  _buildInputField(
-                    controller: _emailController,
-                    labelText: 'Email',
-                    prefixIcon: Icons.email,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  SizedBox(height: 20.0.h),
-                  _buildInputField(
-                    controller: _passwordController,
-                    labelText: 'Password',
-                    prefixIcon: Icons.lock,
-                    obscureText: true,
-                  ),
-                  SizedBox(height: 20.0.h),
-                  Container(
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0.r),
-                      color: AppColors.primaryColor,
+      body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.12,
+              ),
+              Image.asset(
+                "assets/images/walker.png",
+                height: (MediaQuery.of(context).size.height * 0.30).h,
+              ),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                child: Column(
+                  children: [
+                    _buildInputField(
+                      controller: _emailController,
+                      labelText: 'Email',
+                      prefixIcon: Icons.email,
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _authController.login(
-                          context,
-                          _emailController,
-                          _passwordController,
-                        );
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0.r),
+                    SizedBox(height: 20.0.h),
+                    _buildInputField(
+                      controller: _passwordController,
+                      labelText: 'Password',
+                      prefixIcon: Icons.lock,
+                      obscureText: true,
+                    ),
+                    SizedBox(height: 20.0.h),
+                    Container(
+                      height: 50.h,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0.r),
+                        color: AppColors.primaryColor,
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _authController.login(
+                            context,
+                            _emailController,
+                            _passwordController,
+                          );
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0.r),
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.sp,
-                        ),
+                    ),
+                    SizedBox(height: 10.0.h),
+                    GestureDetector(
+                      onTap: () => Get.off(const SignupScreen()), // Using Get for navigation
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("New User? ", style: TextStyle(color: Colors.white)),
+                          Text("Signup", style: TextStyle(color: AppColors.primaryColor)),
+                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10.0.h),
-                  GestureDetector(
-                    onTap: () => Get.off(const SignupScreen()), // Using Get for navigation
-                    child: const Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("New User? ", style: TextStyle(color: Colors.white)),
-                        Text("Signup", style: TextStyle(color: AppColors.primaryColor)),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          )
       ),
+      backgroundColor: AppColors.secondaryColor
     );
   }
 

@@ -1,4 +1,5 @@
 
+import 'package:dinissa/util/app_constant.dart';
 import 'package:flutter/material.dart';
 
 void customBottomSheetWidget({
@@ -13,6 +14,7 @@ void customBottomSheetWidget({
        builder: (context) {
          return DraggableScrollableSheet(
              initialChildSize: initialHeight,
+             minChildSize: bottomSheetMinSize,
              maxChildSize: maxHeight,
              expand: false,
              builder: (_, controller) {
