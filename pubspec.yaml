@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  file_picker: ^5.0.1
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   flutter_native_splash: ^2.4.0
@@ -33,7 +34,9 @@ dependencies:
   dio: ^5.5.0+1
   get: ^4.6.6
   shared_preferences: ^2.3.1
+  get_storage: ^2.0.1
 
+  collection: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

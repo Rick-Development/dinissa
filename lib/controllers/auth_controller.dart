@@ -3,20 +3,32 @@ import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get_storage/get_storage.dart';
 import '../util/api_url.dart';
 import '../util/app_colors.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final box = GetStorage(); // Initialize GetStorage
   var user = {}.obs;
   var token = ''.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Check if user is already logged in
+    if (box.read('isLoggedIn') ?? false) {
+      Get.offAllNamed('/dashboard');
+    }
+  }
 
   void setUserData(Map<String, dynamic> data) {
     user.value = data['user'];
     token.value = data['token'];
+    box.write('isLoggedIn', true); // Store login state
+    box.write('userToken', data['token']); // Store token
   }
-
 
   String get fullName => user['full_name'] ?? 'Unknown';
   String get balance => user['balance'] ?? '0 NGN';
@@ -37,7 +49,7 @@ class AuthController extends GetxController {
 
     if (password != cpassword) {
       ScaffoldMessenger.of(context).showSnackBar(
-       const  SnackBar(
+        const SnackBar(
           content: Text('Passwords do not match'),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
@@ -59,10 +71,8 @@ class AuthController extends GetxController {
           'phone': phone,
         },
       );
-      // print(response);
 
       if (response.statusCode == 200) {
-        print(response);
         // Create a user in Firebase Authentication
         UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
           email: email,
@@ -77,7 +87,8 @@ class AuthController extends GetxController {
         });
 
         print('Sign up successful');
-        Navigator.pushReplacementNamed(context, '/dashboard');
+        setUserData(response.data['data']); // Save user data
+        Get.offAllNamed('/dashboard');
       } else {
         // Handle errors
         var responseData = response.data;
@@ -99,15 +110,15 @@ class AuthController extends GetxController {
             content: Text(errorMessage.trim()),
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
-            margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-            duration: Duration(seconds: 5),
+            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            duration: const Duration(seconds: 5),
           ),
         );
       }
     } catch (e) {
       print('Exception: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Fill all the form'),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
@@ -117,7 +128,7 @@ class AuthController extends GetxController {
     }
   }
 
-  void login(
+  Future<void> login(
       BuildContext context,
       TextEditingController emailController,
       TextEditingController passwordController,
@@ -133,68 +144,31 @@ class AuthController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        print(response.data);
-        var responseData = response.data;
-        // Check if there are any errors in the response data
-        if (responseData['error'] != null && responseData['error'].isNotEmpty) {
-          var error = responseData['error'];
+        var token = response.data['data']['token']!;
+        var userData = response.data['data']['user']!;
 
-          String errorMessage = '';
+        // Sign in with Firebase Authentication
+        UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
 
-          if (error is Map) {
-            if (error.containsKey('message')) {
-              errorMessage = error['message'];
-            } else {
-              error.forEach((key, value) {
-                if (value is List && value.isNotEmpty) {
-                  errorMessage += "${value.join(', ')}\n";
-                }
-              });
-            }
-          }
+        // Store additional user data in Firestore
+        await _firestore.collection('users')
+            .doc(userCredential.user!.uid)
+            .set({
+          'token': token,
+          'email': email,
+          'name': userData['full_name'],
+          'phone': userData['phone'],
+          'account_number': userData['account_number'],
+          'balance': userData['balance']
+        }, SetOptions(merge: true));
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                errorMessage.trim(),
-                style: TextStyle(color: Colors.white),
-              ),
-              backgroundColor: AppColors.danger,
-              duration: Duration(seconds: 3),
-            ),
-          );
-        }else {
-          var token = responseData['data']['token']!;
-          var userData = responseData['data']['user']!;
-
-          // Sign in with Firebase Authentication
-          UserCredential userCredential = await _auth
-              .signInWithEmailAndPassword(
-            email: email,
-            password: password,
-          );
-
-          // Store additional user data in Firestore
-          await _firestore.collection('users')
-              .doc(userCredential.user!.uid)
-              .set({
-            'token': token,
-            'email': email,
-            'name': userData['full_name'],
-            'phone': userData['phone'],
-            'account_number': userData['account_number'],
-            'balance': userData['balance']
-          }, SetOptions(merge: true));
-
-          // No errors, proceed with the data // Get the existing instance or create a new one
-          setUserData(responseData['data']);
-
-          print('Login successful');
-          // Navigate to the appropriate screen or update UI as needed
-          Get.offAllNamed('/dashboard'); // Example route to the dashboard
-          // print('Login successful');
-          // Navigator.pushReplacementNamed(context, '/dashboard');
-        }
+        // No errors, proceed with the data
+        setUserData(response.data['data']); // Save user data
+        print('Login successful');
+        Get.offAllNamed('/dashboard'); // Navigate to the dashboard
       } else {
         // Handle errors
         var responseData = response.data;
@@ -218,18 +192,18 @@ class AuthController extends GetxController {
           SnackBar(
             content: Text(
               errorMessage.trim(),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             backgroundColor: AppColors.danger,
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
           ),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-       const SnackBar(
+        const SnackBar(
           content: Text(
-           'Email and Password is required',
+            'Email and Password are required',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: AppColors.danger,
@@ -237,8 +211,6 @@ class AuthController extends GetxController {
         ),
       );
       print('Exception: $e');
-      print(email);
-      print(password);
     }
   }
 
@@ -255,7 +227,6 @@ class AuthController extends GetxController {
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(email).get();
       if (userDoc.exists) {
         String storedToken = userDoc['token']; // Get the stored token
-        // Example: Send token to your server for verification or use it as needed
 
         // For demonstration, simply re-authenticate the user
         UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -264,10 +235,10 @@ class AuthController extends GetxController {
         );
 
         print('Re-authentication successful');
-        Navigator.pushReplacementNamed(context, '/dashboard');
+        Get.offAllNamed('/dashboard'); // Navigate to dashboard
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('User not found'),
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
@@ -283,7 +254,7 @@ class AuthController extends GetxController {
           content: Text('Exception: $e'),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+          margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
         ),
       );
     }

@@ -7,8 +7,8 @@ import 'package:dinissa/widgets/usable_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/loan_application_controller.dart';
-import 'business_user_details_page.dart';
+import '../../controllers/loan_application_controller.dart';
+import '../main_screen/pages/business_user_details_page.dart';
 
 class LoanApplicationPage extends StatefulWidget {
 
@@ -176,10 +176,10 @@ class _LoanApplicationPage extends State<LoanApplicationPage> {
                           width: MediaQuery.of(context).size.width,
                           child: ElevatedButton(
                             onPressed: () {
-                              if(_formKey.currentState?.validate() == true) {
+                              // if(_formKey.currentState?.validate() == true) {
                                 Navigator.push(context,
-                                    MaterialPageRoute(builder: (context)=> BusinessUserDetailsPage() ));
-                              }
+                                    MaterialPageRoute(builder: (context)=> const BusinessUserDetailsPage() ));
+                              // }
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.primaryColor400,

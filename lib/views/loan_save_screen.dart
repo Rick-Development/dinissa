@@ -1,6 +1,6 @@
 
 import 'package:dinissa/views/main_screen/pages/finance_screen.dart';
-import 'package:dinissa/views/main_screen/pages/loan_application_page.dart';
+import 'package:dinissa/views/loan/loan_application_page.dart';
 import 'package:flutter/material.dart';
 import '../util/app_colors.dart';
 

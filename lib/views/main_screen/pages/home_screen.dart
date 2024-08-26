@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:dinissa/util/app_colors.dart';
 import 'package:dinissa/util/widgets/crypto_card.dart';
 import 'package:dinissa/util/widgets/news_card.dart';
 import 'package:dinissa/util/widgets/shortcut_widget.dart';
@@ -24,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             child: const Icon(Icons.opacity),
           ),
         ],
-        backgroundColor: AppColors.primaryColor,
+        // backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black,
         automaticallyImplyLeading: false,
       ),

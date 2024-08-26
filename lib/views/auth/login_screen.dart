@@ -78,8 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-                          shape: MaterialStateProperty.all(
+                          backgroundColor: WidgetStateProperty.all(AppColors.primaryColor),
+                          shape: WidgetStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0.r),
                             ),

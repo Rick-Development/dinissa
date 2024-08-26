@@ -1,8 +1,10 @@
 import 'package:dinissa/views/ComingSoonScreen.dart';
-import 'package:dinissa/views/main_screen/pages/finance_screen.dart';
+import 'package:dinissa/views/invest/investment_screen.dart';
+import 'package:dinissa/views/loan/LoanScreen.dart';
 import 'package:dinissa/views/savings/saving_screen.dart';
+import 'package:dinissa/views/transactions/transaction_history_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:dinissa/views/main_screen/pages/loan_application_page.dart';
+import 'package:dinissa/views/loan/loan_application_page.dart';
 
 import '../app_colors.dart';
 // import '../screens/send_funds_screen.dart'; // Import necessary screens
@@ -101,9 +103,9 @@ class FinanceServicesGrid extends StatelessWidget {
                 _buildServiceCard(context, 'Betting', Icons.sports_soccer, const ComingSoonScreen()),
                 _buildServiceCard(context, 'Cable Tv', Icons.tv, const ComingSoonScreen()),
                 _buildServiceCard(context, 'Save', Icons.savings, const SavingScreen()),
-                _buildServiceCard(context, 'Loan', Icons.request_quote, const LoanApplicationPage()),
-                _buildServiceCard(context, 'Invest', Icons.assessment, const ComingSoonScreen()),
-                _buildServiceCard(context, 'Transactions', Icons.receipt_long, const ComingSoonScreen()),
+                _buildServiceCard(context, 'Loan', Icons.request_quote,  LoanScreen()),
+                _buildServiceCard(context, 'Invest', Icons.assessment,  InvestmentScreen()),
+                _buildServiceCard(context, 'Transactions', Icons.receipt_long,   TransactionHistoryScreen()),
               ],
             ),
           ],

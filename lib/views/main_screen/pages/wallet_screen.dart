@@ -17,7 +17,7 @@ class _WalletScreenState extends State<WalletScreen> {
       appBar: AppBar(
         title: const Text('Wallet'),
         automaticallyImplyLeading: false,
-        backgroundColor: AppColors.primaryColor,
+        // backgroundColor: AppColors.primaryColor,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8),
@@ -34,7 +34,7 @@ class _WalletScreenState extends State<WalletScreen> {
                     Color(0xFFff8465),
                     Color(0xFFe75586),
                     Color(0xFFa347a4),
-                    Color(0xFF004aac),
+                    // Color(0xFF004aac),
                   ],
                 ),
               ),

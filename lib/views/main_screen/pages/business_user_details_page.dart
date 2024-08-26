@@ -2,7 +2,6 @@ import 'package:dinissa/views/main_screen/pages/document_upload_page.dart';
 import 'package:dinissa/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:collection/collection.dart';
 
 import '../../../controllers/loan_application_controller.dart';

@@ -1,4 +1,4 @@
-import 'package:dinissa/views/main_screen/pages/loan_approved_page.dart';
+import 'package:dinissa/views/loan/loan_approved_page.dart';
 import 'package:dinissa/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 

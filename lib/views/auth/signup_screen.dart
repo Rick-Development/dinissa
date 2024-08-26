@@ -45,7 +45,7 @@ class _SignupScreenState extends State<SignupScreen> {
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
            children: [
-             Container(
+             SizedBox(
               width: MediaQuery.of(context).size.width * 1.5, // 1.5 times the screen width
               child: Image.asset(
                 'assets/images/Sun2.png',

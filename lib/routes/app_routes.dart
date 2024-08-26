@@ -3,7 +3,7 @@ import 'package:dinissa/views/auth/signup_screen.dart';
 import 'package:dinissa/views/main_screen/main_screen.dart';
 import 'package:dinissa/views/main_screen/pages/home_screen.dart';
 import 'package:dinissa/views/loan_save_screen.dart';
-import 'package:dinissa/views/main_screen/pages/loan_application_page.dart';
+import 'package:dinissa/views/loan/loan_application_page.dart';
 import 'package:dinissa/views/p2p_screen.dart';
 import 'package:dinissa/views/profile_screen.dart';
 import 'package:dinissa/views/intro/splash_screen.dart';
@@ -13,8 +13,6 @@ import 'package:dinissa/views/main_screen/pages/wallet_screen.dart';
 import 'package:dinissa/views/main_screen/pages/discover_screen.dart';
 import 'package:dinissa/views/intro/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
@@ -66,10 +64,10 @@ class AppRoutes {
       case loanSaving:
         return MaterialPageRoute(builder: (_) => const LoanSaveScreen());
       default:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return null;
     }
   }
-  static void closeAppUsingSystemPop() {
-    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-  }
+  // static void closeAppUsingSystemPop() {
+  //   SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  // }
 }

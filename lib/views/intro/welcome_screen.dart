@@ -1,4 +1,3 @@
-import 'package:dinissa/routes/app_routes.dart';
 import 'package:dinissa/util/app_colors.dart';
 import 'package:dinissa/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -145,7 +144,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(AppColors.primaryColor),
+                          WidgetStateProperty.all(AppColors.primaryColor),
                         ),
                         onPressed: _currentIndex == _slides.length - 1
                             ? _continue
