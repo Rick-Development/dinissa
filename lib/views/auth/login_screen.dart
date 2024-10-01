@@ -1,8 +1,8 @@
-// lib/views/auth/login_screen.dart
 import 'package:dinissa/controllers/auth_controller.dart';
 import 'package:dinissa/views/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../util/app_colors.dart';
 
@@ -29,55 +29,47 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.secondaryColor,
         foregroundColor: Colors.black,
+        automaticallyImplyLeading: false,
       ),
-      body: Container(
-        color: AppColors.secondaryColor,
-        child: Column(
-          children: [
-            Image.asset(
-              "assets/images/undraw_walking_in_rain_vo9p 2.png",
-              height: (MediaQuery.of(context).size.height * 0.30).h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h),
-              child: Text(
-                'Dinissa', // Replace with your app name
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+      body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.12,
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-              child: Column(
-                children: [
-                  _buildInputField(
-                    controller: _emailController,
-                    labelText: 'Email',
-                    prefixIcon: Icons.email,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  SizedBox(height: 20.0.h),
-                  _buildInputField(
-                    controller: _passwordController,
-                    labelText: 'Password',
-                    prefixIcon: Icons.lock,
-                    obscureText: true,
-                  ),
-                  SizedBox(height: 20.0.h),
-                  Container(
-                    height: 40.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0.r),
-                      border: Border.all(color: Colors.grey),
+              Image.asset(
+                "assets/images/walker.png",
+                height: (MediaQuery.of(context).size.height * 0.30).h,
+              ),
+              SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+                child: Column(
+                  children: [
+                    _buildInputField(
+                      controller: _emailController,
+                      labelText: 'Email',
+                      prefixIcon: Icons.email,
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    child: SizedBox(
-                      width: (MediaQuery.of(context).size.width * 0.9).w,
-                      child: FloatingActionButton.extended(
+                    SizedBox(height: 20.0.h),
+                    _buildInputField(
+                      controller: _passwordController,
+                      labelText: 'Password',
+                      prefixIcon: Icons.lock,
+                      obscureText: true,
+                    ),
+                    SizedBox(height: 20.0.h),
+                    Container(
+                      height: 50.h,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0.r),
+                        color: AppColors.primaryColor,
+                      ),
+                      child: ElevatedButton(
                         onPressed: () {
                           _authController.login(
                             context,
@@ -85,48 +77,55 @@ class _LoginScreenState extends State<LoginScreen> {
                             _passwordController,
                           );
                         },
-                        label: const Text('Login'),
-                        backgroundColor: AppColors.primaryColor,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0.r),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all(AppColors.primaryColor),
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0.r),
+                            ),
+                          ),
                         ),
-                        elevation: 5.0,
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.sp,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10.0.h),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (_) => const SignupScreen()),
+                    SizedBox(height: 10.0.h),
+                    GestureDetector(
+                      onTap: () => Get.off(const SignupScreen()), // Using Get for navigation
+                      child: const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("New User? ", style: TextStyle(color: Colors.white)),
+                          Text("Signup", style: TextStyle(color: AppColors.primaryColor)),
+                        ],
+                      ),
                     ),
-                    child: const Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("New User ? ", style: TextStyle(color: Colors.white)),
-                        Text("Signup", style: TextStyle(color: AppColors.primaryColor)),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          )
       ),
+      backgroundColor: AppColors.secondaryColor
     );
   }
 
   Widget _buildInputField({
-  required String labelText,
-  required IconData prefixIcon,
+    required String labelText,
+    required IconData prefixIcon,
     bool obscureText = false,
     required TextEditingController controller,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return Container(
-      height: 40,
+      height: 50.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0.r),
         border: Border.all(color: Colors.grey),

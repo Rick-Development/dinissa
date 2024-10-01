@@ -1,8 +1,9 @@
+
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services' // Add the Google services Gradle plugin
     id 'kotlin-android'
     id 'dev.flutter.flutter-gradle-plugin'
+    id 'com.google.gms.google-services' // Apply after other plugins
 }
 
 def localProperties = new Properties()
@@ -24,7 +25,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.rick.dinissa.dinissa"
+    namespace "com.rickdeprogrammer.dinissa"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -34,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.rick.dinissa.dinissa"
+        applicationId "com.rickdeprogrammer.dinissa"
         minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

@@ -1,4 +1,5 @@
 import 'package:dinissa/services/api_service.dart';
+import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,8 +25,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Discover'),
+        title: const Text('Market'),
         automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primaryColor,
       ),
       body: FutureBuilder<List<dynamic>>(
         future: cryptoData,
@@ -37,7 +39,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           } else {
             return Column(
               children: [
-                Container(
+                Visibility(
+                    visible: false,
+                    child:  Container(
                   padding: const EdgeInsets.all(16.0),
                   color: Colors.black,
                   child: const Column(
@@ -65,7 +69,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                       ),
                     ],
                   ),
-                ),
+                )),
                 Container(
                   padding: const EdgeInsets.symmetric(
                       vertical: 8.0, horizontal: 16.0),

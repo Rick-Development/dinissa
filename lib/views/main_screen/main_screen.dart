@@ -1,7 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dinissa/util/app_colors.dart';
-import 'package:dinissa/views/loan_save_screen.dart';
-import 'package:dinissa/views/main_screen/pages/trade_screen.dart';
+import 'package:dinissa/views/main_screen/pages/account.dart';
 import 'package:dinissa/views/main_screen/pages/discover_screen.dart';
 import 'package:dinissa/views/main_screen/pages/home_screen.dart';
 import 'package:dinissa/views/main_screen/pages/finance_screen.dart';
@@ -9,24 +8,24 @@ import 'package:dinissa/views/main_screen/pages/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _DashboardScreenState extends State<DashboardScreen> {
   bool isConnected = true;
 
   int _selectedIndex = 0;
   final List _pages = [
     const HomeScreen(),
-    const TradeScreen(),
-     const LoanSaveScreen(),
-    // const FinanceScreen(),
+    const DiscoverScreen(),
+     // const LoanSaveScreen(),
+    const FinanceScreen(),
     const WalletScreen(),
-    const DiscoverScreen()
+    const AccountScreen()
   ];
 
   // function to update the selected index to enable page changes
@@ -92,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.attach_money),
-            label: 'Trade',
+            label: 'Market',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.swap_horiz),
@@ -104,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.remove_red_eye),
-            label: 'Discover',
+            label: 'Settings',
           ),
         ],
       ),
