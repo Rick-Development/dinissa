@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../../widgets/custom_back_button.dart';
 
 class ImproveLoanOfferScreen extends StatelessWidget {
+  const ImproveLoanOfferScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class ImproveLoanOfferScreen extends StatelessWidget {
         // backgroundColor: Color(0xFF2D2D2D),
         elevation: 0,
         leading:  customBackButton(context: context),
-        title: Text(
+        title: const Text(
           'Improve your loan offer',
           style: TextStyle(color: Colors.black, fontSize: 18),
         ),
@@ -30,17 +32,17 @@ class ImproveLoanOfferScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 14),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildOption(
               icon: Icons.work,
               title: 'Employment Details',
               description: 'Update your employment and education status.',
               onTap: () {
                 // Navigate to Employment Details screen
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>EmploymentDetailsScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const EmploymentDetailsScreen()));
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildOption(
               icon: Icons.account_balance,
               title: 'Bank Statement',
@@ -50,8 +52,8 @@ class ImproveLoanOfferScreen extends StatelessWidget {
                 print("Bank Statement tapped");
               },
             ),
-            Spacer(),
-            Container(
+            const Spacer(),
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -59,19 +61,19 @@ class ImproveLoanOfferScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 onPressed: () {
                   // Continue action
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=> EmploymentDetailsScreen()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=> const EmploymentDetailsScreen()));
                 },
-                child: Text(
+                child: const Text(
                   'Continue',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -87,16 +89,16 @@ class ImproveLoanOfferScreen extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child:  Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Color(0XF3C464C),
+          color: const Color(0x0f3c464c),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(icon, color: Colors.grey),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

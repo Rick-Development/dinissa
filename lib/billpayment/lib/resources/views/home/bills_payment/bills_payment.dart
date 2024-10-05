@@ -1,11 +1,10 @@
-import 'package:billvaoit/resources/views/home/bills_payment/betting_view.dart';
-import 'package:billvaoit/resources/views/home/bills_payment/tv_bill_view.dart';
+import '../../../../resources/views/home/bills_payment/betting_view.dart';
+import '../../../../resources/views/home/bills_payment/tv_bill_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'airtime_bill_view.dart';
-import 'airtime_to_cash_view.dart';
 import 'data_bill_view.dart.dart';
 import 'electricity_bill_view.dart';
 
@@ -82,7 +81,7 @@ class BillsPaymentViewState extends State<BillsPaymentView> {
                   svg: 'electricitybill',
                   title: 'Electricity',
                   onTap: () {
-                    Get.to(ElectricityBillView());
+                    Get.to(const ElectricityBillView());
                   },
                 ),
                 essentialWidget(

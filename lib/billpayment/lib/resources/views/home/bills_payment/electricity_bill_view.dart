@@ -1,6 +1,6 @@
-import 'package:billvaoit/app/http/controllers/bill_payments.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+import '../../../../app/http/controllers/bill_payments.dart';
+import '../../../../resources/utils/app_colors.dart';
+import '../../../../resources/widgets/usable_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';

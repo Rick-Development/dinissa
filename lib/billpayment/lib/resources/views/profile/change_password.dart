@@ -1,12 +1,10 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/app/http/controllers/auth/auth_controller.dart';
-import 'package:billvaoit/app/http/controllers/password_controller.dart';
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../utils/button.dart';
 import '../../widgets/custom_textfield.dart';
+import '../../widgets/usable_loading.dart';
 
 class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({super.key});
@@ -19,7 +17,7 @@ class _changePasswordView extends State<ChangePasswordView>{
   late final TextEditingController oldPassword;
   late final TextEditingController newPassword;
   late final TextEditingController confirmNewPassword;
-  late PasswordController passwordController = Get.put(PasswordController());
+  // late PasswordController passwordController = Get.put(PasswordController());
 
 
 
@@ -30,7 +28,7 @@ class _changePasswordView extends State<ChangePasswordView>{
     oldPassword = TextEditingController();
     newPassword = TextEditingController();
     confirmNewPassword = TextEditingController();
-    passwordController.isLoading.value = false;
+    // passwordController.isLoading.value = false;
   }
 
   @override
@@ -38,7 +36,7 @@ class _changePasswordView extends State<ChangePasswordView>{
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx((){
-        return passwordController.isLoading.value ? const UsableLoading() :
+        return// passwordController.isLoading.value ? const UsableLoading() :
         SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,38 +87,38 @@ class _changePasswordView extends State<ChangePasswordView>{
                     title: 'Save',
                     onTap: () async =>
                     {
-                    await passwordController.validate(
-                        oldPassword: oldPassword.text, password: newPassword.text,password_confirmation: confirmNewPassword.text)
-                      // if( await passwordController.validate(
-                      //     email: User().email, password: oldPassword.text) == true){
-                      //   if(newPassword == oldPassword){
-                      //     passwordController.changePassword(newPassword.text)
-                      //   } else
-                      //     {
-                      //       Get.snackbar(
-                      //         'Error',
-                      //         'Password mismatch',
-                      //         snackPosition: SnackPosition.BOTTOM,
-                      //         backgroundColor: Colors.red,
-                      //         colorText: Colors.white,
-                      //         icon: const Icon(Icons.warning_amber_rounded,
-                      //             color: Colors.white),
-                      //       ),
-                      //       passwordController.isLoading.value = false
-                      //     }
-                      // } else
-                      //   {
-                      //     Get.snackbar(
-                      //       'Error',
-                      //       'Incorrect old password',
-                      //       snackPosition: SnackPosition.BOTTOM,
-                      //       backgroundColor: Colors.red,
-                      //       colorText: Colors.white,
-                      //       icon: const Icon(Icons.warning_amber_rounded,
-                      //           color: Colors.white),
-                      //     ),
-                      //     passwordController.isLoading.value = false
-                      //   },
+                    // await passwordController.validate(
+                    //     oldPassword: oldPassword.text, password: newPassword.text,password_confirmation: confirmNewPassword.text)
+                    //   // if( await passwordController.validate(
+                    //   //     email: User().email, password: oldPassword.text) == true){
+                    //   //   if(newPassword == oldPassword){
+                    //   //     passwordController.changePassword(newPassword.text)
+                    //   //   } else
+                    //   //     {
+                    //   //       Get.snackbar(
+                    //   //         'Error',
+                    //   //         'Password mismatch',
+                    //   //         snackPosition: SnackPosition.BOTTOM,
+                    //   //         backgroundColor: Colors.red,
+                    //   //         colorText: Colors.white,
+                    //   //         icon: const Icon(Icons.warning_amber_rounded,
+                    //   //             color: Colors.white),
+                    //   //       ),
+                    //   //       passwordController.isLoading.value = false
+                    //   //     }
+                    //   // } else
+                    //   //   {
+                    //   //     Get.snackbar(
+                    //   //       'Error',
+                    //   //       'Incorrect old password',
+                    //   //       snackPosition: SnackPosition.BOTTOM,
+                    //   //       backgroundColor: Colors.red,
+                    //   //       colorText: Colors.white,
+                    //   //       icon: const Icon(Icons.warning_amber_rounded,
+                    //   //           color: Colors.white),
+                    //   //     ),
+                    //   //     passwordController.isLoading.value = false
+                    //   //   },
                     }
                   ),
                 ],

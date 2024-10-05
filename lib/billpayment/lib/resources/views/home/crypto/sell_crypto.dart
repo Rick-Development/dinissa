@@ -1,22 +1,20 @@
 import 'dart:io';
 
-import 'package:billvaoit/app/http/controllers/payment_controller.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
-import 'package:billvaoit/resources/views/home/crypto/trade_success.dart';
-import 'package:billvaoit/resources/views/success_view.dart';
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+import '../../../../app/http/controllers/payment_controller.dart';
+import '../../../../resources/utils/app_colors.dart';
+import '../../../../resources/views/home/crypto/trade_success.dart';
+import '../../../../resources/views/success_view.dart';
+import '../../../../resources/widgets/usable_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../utils/button.dart';
-import '../buy_giftcard/pin_bottomsheet.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:qr_flutter/qr_flutter.dart'; // Ensure this package is installed
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../app/http/controllers/crypto_controller.dart';
 
 class SellCryptoScreen extends StatefulWidget {
   const SellCryptoScreen({super.key});
@@ -96,8 +94,8 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('',
-                        style: const TextStyle(fontSize: 22,
+                      const Text('',
+                        style: TextStyle(fontSize: 22,
                             fontWeight: FontWeight.bold),
                       ),
                       InkWell(
@@ -118,10 +116,10 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                           }
                         },
                         child:  Container(
-                            padding: EdgeInsets.all(4),
+                            padding: const EdgeInsets.all(4),
                             decoration: BoxDecoration(
                               color: AppColors.primaryColor.withOpacity(0.4),
-                              borderRadius: BorderRadius.all(Radius.circular(22)),
+                              borderRadius: const BorderRadius.all(Radius.circular(22)),
                             ),
                             child: const Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -138,8 +136,8 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
 
                   const SizedBox(height: 10),
                   Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
                       // color: AppColors.primaryColor.withOpacity(0.1)
                     ),
                     child: Column(
@@ -151,17 +149,17 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                             //    'Coin',
                             //    style: TextStyle(color: Colors.grey),
                             //  ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Visibility(
                                 visible: false,
                                 child:
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                   decoration: BoxDecoration(
                                     color: Colors.grey[800]?.withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child:  Row(
+                                  child:  const Row(
                                     children: [
                                       // Icon(Icons.currency_bitcoin, color: Colors.yellow),
                                       SizedBox(width: 8),
@@ -194,12 +192,12 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                               },
                               readOnly: true,
                               decoration:  InputDecoration(
-                                border: OutlineInputBorder(),
-                                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12), // Adjust padding to reduce height
+                                border: const OutlineInputBorder(),
+                                contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12), // Adjust padding to reduce height
                                 suffixText: '${manualDepositDatas['data']['method_currency']}',
                               ),
                             ),
-                            SizedBox(height: 18),
+                            const SizedBox(height: 18),
                             // Obx((){
                             //   return Row(
                             //     mainAxisAlignment: MainAxisAlignment.end,
@@ -216,7 +214,7 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                                 ),
                               ),
                             ),
-                            Gap(25),
+                            const Gap(25),
                             Center(
                               child: Text('${manualDepositDatas['gateway']['description']}', style: const TextStyle(fontSize: 16)),
                             ),
@@ -229,7 +227,7 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                                 version: QrVersions.auto, // Optional
                               ),
                             ),
-                            Center(
+                            const Center(
                               child: Text('Scan ')
                             ),
                             const SizedBox(height: 16),
@@ -266,7 +264,7 @@ class SellCryptoScreenState extends State<SellCryptoScreen>{
                                 ),
                               ],
                             ),
-                            Gap(20),
+                            const Gap(20),
 
                           ],
                         ),

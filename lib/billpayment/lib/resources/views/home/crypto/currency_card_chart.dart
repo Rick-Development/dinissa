@@ -10,7 +10,7 @@ class CurrencyCardChart extends StatelessWidget {
   final String percentageChange;
   final Color percentageChangeColor;
 
-  const CurrencyCardChart({
+  const CurrencyCardChart({super.key, 
     required this.currencyKey,
     required this.currencyFullname,
     required this.currencySymbol,
@@ -101,7 +101,7 @@ class CurrencyCardChart extends StatelessWidget {
                       spots: trendData,
                       isCurved: true,
                       dotData: FlDotData(show: false),
-                      color: percentageChangeColor,  // This is the correct usage now
+                      // colors: percentageChangeColor,  // This is the correct usage now
                       belowBarData: BarAreaData(show: false),
                       barWidth: 2,
                     ),

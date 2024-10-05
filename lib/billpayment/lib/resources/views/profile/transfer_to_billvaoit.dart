@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/profile/transfer_second_page.dart';
+// import '../../resources/views/profile/transfer_second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -52,9 +52,9 @@ class _TransferTobillvaoitState extends State<TransferTobillvaoit> {
               primaryButton(context, title: 'Nweke Mary Chisom', radius: 4),
               const Gap(75),
               primaryButton(context, title: 'Confirm', onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (_) => const TransferSecondPage(),
-                ));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //   builder: (_) => const TransferSecondPage(),
+                // ));
               }),
               Gap(MediaQuery.of(context).padding.bottom + 20),
             ],

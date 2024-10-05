@@ -4,10 +4,18 @@ import 'package:qr_flutter/qr_flutter.dart'; // Ensure this package is installed
 
 import '../../../../app/http/controllers/crypto_controller.dart';
 
-class BuyCryptoScreen extends StatelessWidget {
-  final CryptoController controller ;
-
+class BuyCryptoScreen extends StatefulWidget {
+   final CryptoController controller;
   const BuyCryptoScreen({super.key, required this.controller});
+
+  @override
+  State<BuyCryptoScreen> createState() => BuyCryptoScreenState();
+
+}
+
+
+class BuyCryptoScreenState extends State<BuyCryptoScreen>{
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +38,13 @@ class BuyCryptoScreen extends StatelessWidget {
             const SizedBox(height: 10),
             // Dropdown for crypto selection
             Obx(() => DropdownButton<String>(
-              value: controller.selectedCrypto.value,
+              value: widget.controller.selectedCrypto.value,
               onChanged: (value) {
                 if (value != null) {
-                  controller.selectCrypto(value);
+                  widget.controller.selectCrypto(value);
                 }
               },
-              items: controller.cryptoList
+              items: widget.controller.cryptoList
                   .map((crypto) => DropdownMenuItem<String>(
                 value: crypto['name'],
                 child: Text(crypto['name']),
@@ -49,7 +57,7 @@ class BuyCryptoScreen extends StatelessWidget {
             TextField(
               keyboardType: TextInputType.number,
               onChanged: (value) {
-                controller.calculateCryptoAmount(ngnAmount: double.tryParse(value) ?? 0);
+                widget.controller.calculateCryptoAmount(ngnAmount: double.tryParse(value) ?? 0);
               },
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -61,30 +69,30 @@ class BuyCryptoScreen extends StatelessWidget {
             Obx(() => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(controller.walletAddress.value, style: const TextStyle(fontSize: 16)),
+                Text(widget.controller.walletAddress.value, style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 10),
                 // Correctly use QrImage
                 QrImageView(
-                  data: controller.walletAddress.value,  // Pass the wallet address to generate the QR code
+                  data: widget.controller.walletAddress.value,  // Pass the wallet address to generate the QR code
                   size: 150.0,
                   version: QrVersions.auto, // Optional
                 ),
               ],
             )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Crypto Details Review
             Obx(() => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Rate: ${controller.cryptoRate.value}'),
-                Text('Amount: ${controller.cryptoAmount.value.toStringAsFixed(6)}'),
-                SizedBox(height: 10),
+                Text('Rate: ${widget.controller.cryptoRate.value}'),
+                Text('Amount: ${widget.controller.cryptoAmount.value.toStringAsFixed(6)}'),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Proceed to payment
                   },
-                  child: Text('Proceed to Payment'),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: const Text('Proceed to Payment'),
                 )
               ],
             )),

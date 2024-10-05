@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'package:get/get_navigation/src/snackbar/snackbar_controller.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:get/get.dart';
 
-import '../http/controllers/wallet_controller.dart';
 
 class Wallet {
   GetStorage? storage;

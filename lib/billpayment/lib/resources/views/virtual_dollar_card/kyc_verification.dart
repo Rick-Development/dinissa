@@ -1,5 +1,3 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/resources/views/virtual_dollar_card/virtual_dollar_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -9,7 +7,6 @@ import '../../utils/button.dart';
 import '../../widgets/custom_textfield.dart';
 import '../auth_views/otp_verification.dart';
 import '../success_view.dart';
-import 'card_details_view.dart';
 
 class KycVerification extends StatelessWidget {
   const KycVerification({super.key});
@@ -78,7 +75,7 @@ class KycVerification extends StatelessWidget {
                   next: SuccessView(
                     content: 'Your payment has been successful',
                     buttonText: 'View Card',
-                    next: VirtualDollarCard(),
+                    // next: VirtualDollarCard(),
                   ),
                 ),
               ));

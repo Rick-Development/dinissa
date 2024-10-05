@@ -1,10 +1,11 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
+
+import 'package:dinissa/views/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../util/app_colors.dart';
 import '../../../../app/http/controllers/giftcards/giftcard_controller.dart';
 import '../../../utils/button.dart';
 import '../../home.dart';
@@ -53,7 +54,7 @@ class BillSuccess extends StatelessWidget {
             Obx(() {
               if (giftCardController.isBuying.value) {
                 // Display loading indicator while buying is in progress
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
 
               // Otherwise, display the success message and transaction details
@@ -62,7 +63,7 @@ class BillSuccess extends StatelessWidget {
                   SvgPicture.asset('assets/svgs/success.svg'),
                   const Gap(23),
                   Text(
-                    'Successful!!!',
+                    'Transaction Successful!!!',
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge
@@ -100,7 +101,7 @@ class BillSuccess extends StatelessWidget {
                   color: AppColors.primaryColor,
                   title: buttonText ?? 'Go to Home',
                   onTap: () async {
-                    Get.to(const Home());
+                    Get.to(const DashboardScreen());
                   },
                 ),
                 Gap(MediaQuery.of(context).padding.bottom + 24),

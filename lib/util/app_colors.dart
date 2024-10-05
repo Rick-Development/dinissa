@@ -21,7 +21,7 @@ class AppColors {
   static const primaryTintColor600 = Color(0xFFfff5e7); // #fff5e7
   static const primaryTintColor700 = Color(0xFFFFFFFF); // #ffffff
 
-
+  static const bgColor = Color.fromARGB(255, 10, 29, 52);
 
   static const secondaryColor = Color(0xFF004AAC);
   static const secondaryColor50 = Color(0xFF004aac);

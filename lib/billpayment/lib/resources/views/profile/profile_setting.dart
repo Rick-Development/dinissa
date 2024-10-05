@@ -14,7 +14,7 @@ class ProfileSettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User user =  User();
-    print(user.getUserDetails());
+    // print(user.getUserDetails());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -39,7 +39,7 @@ class ProfileSettingView extends StatelessWidget {
               ),
             ),
             const Gap(38),
-            ProfileImagePicker(),
+            const ProfileImagePicker(),
             const Gap(20),
             Text(
               user.username.toUpperCase(),
@@ -67,7 +67,7 @@ class ProfileSettingView extends StatelessWidget {
                   trailingSvg: 'check',
                 ),
                  CustomTextfield(
-                  hintText: '${user.address}',
+                  hintText: user.address,
                 ),
                 DropdownButtonFormField<String>(
                   decoration: InputDecoration(

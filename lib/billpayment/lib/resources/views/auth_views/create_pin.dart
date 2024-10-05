@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/auth_views/reset_password.dart';
+import '../../../resources/views/auth_views/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pinput/pinput.dart';

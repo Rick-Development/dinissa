@@ -1,8 +1,6 @@
-import 'package:billvaoit/app/http/controllers/auth/auth_controller.dart';
+import '../../../../../controllers/auth_controller.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../http/controllers/user_controller.dart';
-import 'package:get/get.dart';
 
 class User extends AuthController {
   late Map<String, dynamic> user_details;
@@ -10,7 +8,7 @@ class User extends AuthController {
   // UserController userController = Get.put(UserController());
   User() {
 
-    user_details = getUserDetails();  // Assuming getUserDetails fetches user details
+    // user_details = getUserDetails();  // Assuming getUserDetails fetches user details
     // print(user_details);
   }
 

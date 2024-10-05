@@ -26,7 +26,7 @@ class AuthController extends GetxController {
   }
 
   Future<Response?> signUp(Map<String, dynamic> data) async {
-    String error_m =
+    String errorM =
         'An error occurred while registering, please contact the administrator.';
     try {
       return await _authenticationService.signUp(data);
@@ -43,7 +43,7 @@ class AuthController extends GetxController {
     } catch (e) {
       // printLog(e);
       printError(info: e.toString());
-      throw Exception(error_m);
+      throw Exception(errorM);
     }
     // return tokenData;
   }

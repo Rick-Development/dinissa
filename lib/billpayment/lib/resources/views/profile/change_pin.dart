@@ -1,7 +1,3 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/app/http/controllers/auth/auth_controller.dart';
-import 'package:billvaoit/app/http/controllers/pin_controller.dart';
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -13,6 +9,7 @@ class ChangePinView extends StatefulWidget {
   const ChangePinView({super.key});
 
 
+  @override
   State<ChangePinView> createState() => _changePinState();
 }
 
@@ -20,7 +17,7 @@ class _changePinState extends State<ChangePinView>{
   late final TextEditingController oldPin;
   late final TextEditingController newPin;
   late final TextEditingController confrinNewPin;
-  late final PinController pinController = Get.put(PinController());
+  // late final PinController pinController = Get.put(PinController());
 
   @override
   void initState() {
@@ -29,7 +26,7 @@ class _changePinState extends State<ChangePinView>{
     oldPin = TextEditingController();
     newPin = TextEditingController();
     confrinNewPin = TextEditingController();
-    pinController.isLoading.value = false;
+    // pinController.isLoading.value = false;
   }
 
   @override
@@ -37,7 +34,9 @@ class _changePinState extends State<ChangePinView>{
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx((){
-        return pinController.isLoading.value ? const UsableLoading() : SingleChildScrollView(
+        return // pinController.isLoading.value ? const UsableLoading() :
+
+        SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
@@ -88,32 +87,32 @@ class _changePinState extends State<ChangePinView>{
                     primaryButton(
                       context,
                       title: 'Save',
-                      onTap: () async =>{
-                        if(oldPin.text == User().pin){
-                          if(newPin.text == confrinNewPin.text){
-                            await  pinController.changePin(newPin.text)
-                          }else{
-                            Get.snackbar(
-                              'Error',
-                              'New Pin mismatch',
-                              snackPosition: SnackPosition.BOTTOM,
-                              backgroundColor: Colors.red,
-                              colorText: Colors.white,
-                              icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
-                            )
-                          }
-                        }else{
-                          Get.snackbar(
-                            'Error',
-                            'Incorrect old pin',
-                            snackPosition: SnackPosition.BOTTOM,
-                            backgroundColor: Colors.red,
-                            colorText: Colors.white,
-                            icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
-                          )
-                        }
-
-                      },
+                      // onTap: () async =>{
+                      //   if(oldPin.text == User().pin){
+                      //     if(newPin.text == confrinNewPin.text){
+                      //       await  pinController.changePin(newPin.text)
+                      //     }else{
+                      //       Get.snackbar(
+                      //         'Error',
+                      //         'New Pin mismatch',
+                      //         snackPosition: SnackPosition.BOTTOM,
+                      //         backgroundColor: Colors.red,
+                      //         colorText: Colors.white,
+                      //         icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
+                      //       )
+                      //     }
+                      //   }else{
+                      //     Get.snackbar(
+                      //       'Error',
+                      //       'Incorrect old pin',
+                      //       snackPosition: SnackPosition.BOTTOM,
+                      //       backgroundColor: Colors.red,
+                      //       colorText: Colors.white,
+                      //       icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
+                      //     )
+                      //   }
+                      //
+                      // },
                     )
                   ],
                 ),

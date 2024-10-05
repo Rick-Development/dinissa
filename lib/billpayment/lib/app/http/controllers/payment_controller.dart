@@ -1,14 +1,10 @@
-import 'package:billvaoit/app/http/services/api_services.dart';
-import 'package:billvaoit/resources/views/webview_screen.dart';
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../resources/views/home/bills_payment/bill_success.dart';
-import '../../../resources/views/home/crypto/sell_crypto.dart';
 import '../../../routes/routes.dart';
 import '../../Models/user/User.dart';
+import '../services/api_services.dart';
 
 
 class PaymentController extends GetxController{
@@ -68,7 +64,7 @@ class PaymentController extends GetxController{
       if (value['currency_id'].toString() == channel && value['currency']['gateways'] != null && value['currency']['gateways'].isNotEmpty) {
         // Loop through each gateway and add it to depositGateways
         value['currency']['gateways'].forEach((gateway) {
-          this.depositGateways.add({
+          depositGateways.add({
             'gateway_name': gateway['name'],
             'min_amount': double.parse(gateway['min_amount']).toStringAsFixed(2),
             'max_amount': double.parse(gateway['max_amount']).toStringAsFixed(2),
@@ -89,7 +85,7 @@ class PaymentController extends GetxController{
 
 
 
-    return this.depositGateways;
+    return depositGateways;
   }
 
   Future<void> getDepositMethods() async{
@@ -97,8 +93,8 @@ class PaymentController extends GetxController{
     // Example request to fetch the wallet data
     String response = await apiServices.makeGetRequest(WebRoutes.depositMethods, headers);
     var data = json.decode(response);
-    this.depositWallets.value =  data['data']['wallets'];
-    print('data: ${this.depositWallets.value}');
+    depositWallets.value =  data['data']['wallets'];
+    print('data: ${depositWallets.value}');
   }
 
   //post
@@ -128,18 +124,18 @@ class PaymentController extends GetxController{
     var data = json.decode(response);
     print(data);
     if(data['status'] == 'success') {
-      String redirect_url = data['data']['redirect_url'];
-      Get.off(() => WebViewScreen(redirectUrl: redirect_url));
+      String redirectUrl = data['data']['redirect_url'];
+      // Get.off(() => WebViewScreen(redirectUrl: redirectUrl));
       // Get.snackbar('', data['data']['redirect_url']);
       // print(data['data']['redirect_url']);
       // this.depositWallets.value =  data['data']['wallets'];
       // print('data: ${this.depositWallets.value}');
-      response = await apiServices.makeGetRequest(redirect_url, headers);
+      response = await apiServices.makeGetRequest(redirectUrl, headers);
       data = json.decode(response);
       storage.write('trx', data['trx']);
       return true;
     }else{
-      this.isLoading.value = false;
+      isLoading.value = false;
       return false;
     }
     // print(data['trx']);
@@ -161,8 +157,8 @@ class PaymentController extends GetxController{
       // Sending POST request with encoded JSON body
       var response =  await apiServices.makePostRequest(WebRoutes.depositManualConfirm, data, headers);
       var datas = json.decode(response);
-      this.manualDepositDatas = datas;
-      print(this.manualDepositDatas);
+      manualDepositDatas = datas;
+      print(manualDepositDatas);
     }catch(e){
       print(e);
     }

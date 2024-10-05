@@ -123,7 +123,8 @@ class _LoginScreenState extends State<LoginScreen> {
     bool obscureText = false,
     required TextEditingController controller,
     TextInputType keyboardType = TextInputType.text,
-  }) {
+  }) 
+  {
     return Container(
       height: 50.h,
       decoration: BoxDecoration(

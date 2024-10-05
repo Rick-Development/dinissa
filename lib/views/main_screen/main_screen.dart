@@ -46,7 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       if (result == ConnectivityResult.none) {
         setState(() {
-          isConnected = false;
+          isConnected = true;
           print("No Internet Connection");
         });
       } else {

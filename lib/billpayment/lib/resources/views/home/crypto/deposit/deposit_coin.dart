@@ -152,7 +152,7 @@ Widget assetWidget(
                           fontSize: 16,
                         ),
                   ),
-                  Gap(8),
+                  const Gap(8),
                   Text(
                     amount ?? '0.0004586 ETH',
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
@@ -176,7 +176,7 @@ Widget assetWidget(
                   fontFamily: 'Roboto'
                     ),
               ),
-              Gap(8),
+              const Gap(8),
               Text(
                 percent ?? '-21.00%',
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(

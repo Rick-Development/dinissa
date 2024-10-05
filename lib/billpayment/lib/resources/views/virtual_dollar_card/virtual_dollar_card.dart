@@ -1,18 +1,12 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/app/http/controllers/virtual_card_controller.dart';
-import 'package:billvaoit/resources/views/home/add_money/add_money.dart';
-import 'package:billvaoit/resources/views/home/dashboard.dart';
-import 'package:billvaoit/resources/views/profile/profile.dart';
-import 'package:billvaoit/resources/views/profile/profile_setting.dart';
-import 'package:billvaoit/resources/views/virtual_dollar_card/widgets/virtual_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../app/Models/user/User.dart';
+import '../../../app/http/controllers/virtual_card_controller.dart';
 import '../../utils/button.dart';
 import '../success_view.dart';
-import 'card_details_view.dart';
 import 'kyc_verification.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +30,7 @@ class _VirtualDollarCard extends State<VirtualDollarCard>{
   @override
   Widget build(BuildContext context) {
     GetStorage storage = GetStorage();
-    bool isVerified = User().isKYCVerified;
+    // bool isVerified = User().isKYCVerified;
     return Scaffold(
 
       appBar: AppBar(
@@ -46,7 +40,7 @@ class _VirtualDollarCard extends State<VirtualDollarCard>{
         //   child: const Icon(Icons.arrow_back_ios_new),
         // ),
       ),
-     body:  isVerified ? ViewDetails() :
+     body:  //isVerified ? ViewDetails() :
      SingleChildScrollView(
        child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -275,134 +269,134 @@ class _VirtualDollarCard extends State<VirtualDollarCard>{
     );
   }
 
-  Widget ViewDetails() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          virtualCard(context: context,viewDetails: viewDetails,virtualDollarCardController: virtualDollarCardController),
-          const Gap(18),
-          Text(
-            'Card balance',
-            style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-              fontSize: 20,
-            ),
-          ),
-      Text(
-        viewDetails ? "USD " + virtualDollarCardController.balance.toString() : '****',
-        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
-        ),
-      ),
-           const Gap(21),
-         actionIcons(),
-          const Gap(21),
-          const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Transactions",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              const Gap(21),
-              Center(
-                child: Text('No Transactions'),
-              )
-            ],
-          )
-          // const Spacer(),
-          // primaryButton(context,
-          //     title: viewDetails ? 'Hide details' : 'View details',
-          //     onTap: () {
-          //       setState(() {
-          //         viewDetails = !viewDetails;
-          //       });
-          //     }),
-          // const Gap(24),
-        ],
-      ),
-    );
-  }
-  Widget actionIcons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        InkWell(
-          onTap: () {
-            Get.to(const ProfileSettingView()); // Navigate using GetX
-          },
-          child: const Column(
-            children: [
-              Icon(Icons.add), // Display the icon
-              Text("Top up"), // Display the text
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            Get.to(const ProfileSettingView()); // Navigate using GetX
-          },
-          child: Column(
-            children: [
-              Transform.rotate(
-                angle: -45, // Rotate 45 degrees in radians
-                child: const Icon(Icons.arrow_downward_rounded),
-              ),
-              const  Text("Withdraw"), // Display the text
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            setState(() {
-            viewDetails = !viewDetails;
-            });
-          },
-          child: Column(
-            children: [
-              Icon(
-                viewDetails ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-              ) ,// Display the icon
-              SizedBox(
-                width: 60,
-                child: Text(
-                  viewDetails ? 'Hide details' : 'View details', // Display the text
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            Get.to(const ProfileSettingView()); // Navigate using GetX
-          },
-          child: const Column(
-            children: [
-              Icon(Icons.receipt_outlined), // Display the icon
-              Text("Statement"), // Display the text
-            ],
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            Get.to(const ProfileSettingView()); // Navigate using GetX
-          },
-          child: const Column(
-            children: [
-              Icon(Icons.more_horiz), // Display the icon
-              Text("More"), // Display the text
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget ViewDetails() {
+  //   return Padding(
+  //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children: [
+  //         virtualCard(context: context,viewDetails: viewDetails,virtualDollarCardController: virtualDollarCardController),
+  //         const Gap(18),
+  //         Text(
+  //           'Card balance',
+  //           style: Theme.of(context).textTheme.labelLarge?.copyWith(
+  //             fontWeight: FontWeight.w700,
+  //             fontSize: 20,
+  //           ),
+  //         ),
+  //     Text(
+  //       viewDetails ? "USD ${virtualDollarCardController.balance}" : '****',
+  //       style: Theme.of(context).textTheme.labelLarge?.copyWith(
+  //         fontWeight: FontWeight.w400,
+  //         fontSize: 16,
+  //       ),
+  //     ),
+  //          const Gap(21),
+  //        actionIcons(),
+  //         const Gap(21),
+  //         const Column(
+  //           crossAxisAlignment: CrossAxisAlignment.start,
+  //           children: [
+  //             Text(
+  //               "Transactions",
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 fontSize: 20,
+  //               ),
+  //             ),
+  //             Gap(21),
+  //             Center(
+  //               child: Text('No Transactions'),
+  //             )
+  //           ],
+  //         )
+  //         // const Spacer(),
+  //         // primaryButton(context,
+  //         //     title: viewDetails ? 'Hide details' : 'View details',
+  //         //     onTap: () {
+  //         //       setState(() {
+  //         //         viewDetails = !viewDetails;
+  //         //       });
+  //         //     }),
+  //         // const Gap(24),
+  //       ],
+  //     ),
+  //   );
+  // }
+  // Widget actionIcons() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //     children: [
+  //       InkWell(
+  //         onTap: () {
+  //           Get.to(const ProfileSettingView()); // Navigate using GetX
+  //         },
+  //         child: const Column(
+  //           children: [
+  //             Icon(Icons.add), // Display the icon
+  //             Text("Top up"), // Display the text
+  //           ],
+  //         ),
+  //       ),
+  //       InkWell(
+  //         onTap: () {
+  //           Get.to(const ProfileSettingView()); // Navigate using GetX
+  //         },
+  //         child: Column(
+  //           children: [
+  //             Transform.rotate(
+  //               angle: -45, // Rotate 45 degrees in radians
+  //               child: const Icon(Icons.arrow_downward_rounded),
+  //             ),
+  //             const  Text("Withdraw"), // Display the text
+  //           ],
+  //         ),
+  //       ),
+  //       InkWell(
+  //         onTap: () {
+  //           setState(() {
+  //           viewDetails = !viewDetails;
+  //           });
+  //         },
+  //         child: Column(
+  //           children: [
+  //             Icon(
+  //               viewDetails ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+  //             ) ,// Display the icon
+  //             SizedBox(
+  //               width: 60,
+  //               child: Text(
+  //                 viewDetails ? 'Hide details' : 'View details', // Display the text
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //       InkWell(
+  //         onTap: () {
+  //           Get.to(const ProfileSettingView()); // Navigate using GetX
+  //         },
+  //         child: const Column(
+  //           children: [
+  //             Icon(Icons.receipt_outlined), // Display the icon
+  //             Text("Statement"), // Display the text
+  //           ],
+  //         ),
+  //       ),
+  //       InkWell(
+  //         onTap: () {
+  //           Get.to(const ProfileSettingView()); // Navigate using GetX
+  //         },
+  //         child: const Column(
+  //           children: [
+  //             Icon(Icons.more_horiz), // Display the icon
+  //             Text("More"), // Display the text
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
 }

@@ -1,9 +1,3 @@
-import 'package:billvaoit/app/http/controllers/auth/auth_controller.dart';
-import 'package:billvaoit/resources/views/auth_views/login.dart';
-import 'package:billvaoit/resources/views/profile/profile_setting.dart';
-import 'package:billvaoit/resources/views/profile/setting.dart';
-import 'package:billvaoit/resources/views/profile/setting_transfer.dart';
-import 'package:billvaoit/resources/views/profile/support.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,15 +17,15 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
-    User user = new User();
+    // AuthController authController = Get.put(AuthController());
+    User user = User();
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             Gap(MediaQuery.of(context).padding.top + 46),
-            Container(
+            SizedBox(
               height: 100,
               width: 100,
               child: CircleAvatar(
@@ -70,9 +64,9 @@ class ProfileView extends StatelessWidget {
             const Gap(43),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const ProfileSettingView(),
-                ));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //   builder: (_) => const ProfileSettingView(),
+                // ));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -112,9 +106,9 @@ class ProfileView extends StatelessWidget {
             const Gap(18),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const SettingView(),
-                ));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //   builder: (_) => const SettingView(),
+                // ));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -156,7 +150,7 @@ class ProfileView extends StatelessWidget {
               onTap: () {
                 // Navigator.of(context).push(MaterialPageRoute(
                   // builder: (_) => const SupportView(),
-                  Get.to(Get.to(WebsiteViewer(url: WebRoutes.tawktoLink,title: 'Live Support',)));
+                  // Get.to(Get.to(const WebsiteViewer(url: WebRoutes.tawktoLink,title: 'Live Support',)));
                 // ));
               },
               child: Container(
@@ -235,7 +229,7 @@ class ProfileView extends StatelessWidget {
             const Gap(18),
             InkWell(
               onTap: () =>{
-                authController.logout(context)
+                // authController.logout(context)
 
               },
               child:  Container(

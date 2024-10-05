@@ -2,27 +2,25 @@ import 'dart:convert';
 import 'dart:io';
 
 
-import 'package:billvaoit/app/http/controllers/user_controller.dart';
-import 'package:billvaoit/resources/views/home/add_money/add_money.dart';
-import 'package:billvaoit/resources/views/home/crypto/crypto_view.dart';
-import 'package:billvaoit/resources/views/home/transfer/transfer_view.dart';
-import 'package:billvaoit/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_tawk/flutter_tawk.dart';
+// import 'package:flutter_tawk/flutter_tawk.dart';
 import 'package:gap/gap.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../app/Models/user/User.dart';
+import '../../../app/http/controllers/user_controller.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/usable_dashboard_slider.dart';
 import '../../widgets/balance_card.dart';
 import '../../widgets/dashboard_topbar.dart';
 import '../../widgets/useable_dashboard_card.dart';
+import 'add_money/add_money.dart';
 import 'bills_payment/bills_payment.dart';
 import 'buy_giftcard/buy_giftcard.dart';
+import 'crypto/crypto_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -32,7 +30,7 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardView> {
-  bool _isBalanceVisible = true;
+  final bool _isBalanceVisible = true;
 
 
   @override
@@ -46,14 +44,14 @@ class _DashboardScreenState extends State<DashboardView> {
     //     print("$k : $v");
     // print("\n");
     // });
-    final _controller = SidebarXController(selectedIndex: 0, extended: true);
-    final _key = GlobalKey<ScaffoldState>();
-    User user = new User();
+    final controller = SidebarXController(selectedIndex: 0, extended: true);
+    final key = GlobalKey<ScaffoldState>();
+    User user = User();
     // return  Obx(() {
       return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: DasboardTopBar(),
+          title: const DasboardTopBar(),
         ),
         drawer: Drawer(
           child: ListView(
@@ -72,22 +70,22 @@ class _DashboardScreenState extends State<DashboardView> {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Home'),
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
                 onTap: () {
                   // Handle navigation
                 },
               ),
               ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Profile'),
+                leading: const Icon(Icons.account_circle),
+                title: const Text('Profile'),
                 onTap: () {
                   // Handle navigation
                 },
               ),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                leading: const Icon(Icons.settings),
+                title: const Text('Settings'),
                 onTap: () {
                   // Handle navigation
                 },
@@ -332,13 +330,13 @@ class _DashboardScreenState extends State<DashboardView> {
                         .of(context)
                         .size
                         .width * 0.6,
-                    child: Tawk(
-                      directChatLink: WebRoutes.tawktoLink,
-                      visitor: TawkVisitor(
-                        name: User().fullName,
-                        email: User().email,
-                      ),
-                    ),
+                    // child: Tawk(
+                    //   directChatLink: WebRoutes.tawktoLink,
+                    //   visitor: TawkVisitor(
+                    //     name: User().fullName,
+                    //     email: User().email,
+                    //   ),
+                    // ),
                   )),
             ],
           ),

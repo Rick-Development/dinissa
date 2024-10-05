@@ -1,5 +1,5 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
+import '../../../../app/Models/user/User.dart';
+import '../../../../resources/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -74,7 +74,7 @@ class SellGiftcardSuccessView extends StatelessWidget {
             Obx(() {
               if (giftCardController.isBuying.value) {
                 // Display loading indicator while buying is in progress
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
 
               // Otherwise, display the success message and transaction details

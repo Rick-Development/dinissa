@@ -1,9 +1,9 @@
-import 'package:billvaoit/resources/views/home/withdrawal/withdrawal_by_bank_view.dart';
+import '../../../../resources/views/home/withdrawal/withdrawal_by_bank_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
-import 'package:billvaoit/resources/widgets/custom_textfield.dart';
-import 'package:billvaoit/resources/utils/button.dart';
+import '../../../../resources/utils/app_colors.dart';
+import '../../../../resources/widgets/custom_textfield.dart';
+import '../../../../resources/utils/button.dart';
 
 import '../../success_view.dart';
 

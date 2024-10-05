@@ -1,9 +1,9 @@
+import 'package:dinissa/billpayment/lib/resources/views/home/crypto/sell_crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gap/gap.dart';
-import 'package:billvaoit/app/http/controllers/crypto_controller.dart';
-import 'package:billvaoit/resources/views/home/crypto/sell_crypto.dart';
 import 'package:get_storage/get_storage.dart';
+import '../../../../app/http/controllers/crypto_controller.dart';
 import '../../../widgets/usable_dashboard_slider.dart';
 import 'deposit/deposit_coin.dart';
 import 'dart:math';
@@ -72,9 +72,9 @@ class CryptoViewState extends State<CryptoView> {
                 children: cryptoController.cryptoList.map((crypto) {
                   // Each `crypto` is a Map<String, dynamic>
                   String key = crypto.keys.first;
-                  String _symbol = crypto.keys.last; // Assuming each map has only one key-value pair
+                  String symbol0 = crypto.keys.last; // Assuming each map has only one key-value pair
                   dynamic value = crypto[key];
-                  dynamic symbol = crypto[_symbol];
+                  dynamic symbol = crypto[symbol0];
 
                   // Generate random percentage between -50% and +50%
                   double randomPercent = (random_num.nextDouble() * 100) - 50;

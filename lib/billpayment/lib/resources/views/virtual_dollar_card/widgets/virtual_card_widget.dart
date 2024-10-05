@@ -1,10 +1,7 @@
-import 'package:billvaoit/app/Models/user/User.dart';
-import 'package:billvaoit/app/http/controllers/virtual_card_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-Widget virtualCard({required BuildContext context, bool viewDetails = false,required VirtualDollarCardController virtualDollarCardController}) => Container(
+Widget virtualCard({required BuildContext context, bool viewDetails = false, dynamic? virtualDollarCardController}) => Container(
       // height: 200,
       padding: const EdgeInsets.symmetric(
         horizontal: 24,

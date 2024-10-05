@@ -223,7 +223,7 @@ class BuyAirtimeViewState extends State<BuyAirtimeView> {
                 primaryButton(
                   context,
                   title: 'Confirm',
-                  color: AppColors.primaryColor,
+                  color: AppColors.secondaryColor,
                   onTap: () async {
                      if(phone_controller.text.isEmpty ) {
                       Get.snackbar('Error', 'Enter a valid Phone number',snackPosition: SnackPosition.BOTTOM,
@@ -317,12 +317,12 @@ class CustomTextfield extends StatelessWidget {
   final TextInputType keyboardType;
 
   const CustomTextfield({
-    Key? key,
+    super.key,
     required this.label,
     required this.hintText,
     required this.ctrl,
     required this.keyboardType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

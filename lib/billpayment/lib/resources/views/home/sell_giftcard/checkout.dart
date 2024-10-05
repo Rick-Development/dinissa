@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/home/buy_giftcard/pin_bottomsheet.dart';
+import '../../../../resources/views/home/buy_giftcard/pin_bottomsheet.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

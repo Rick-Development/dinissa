@@ -150,14 +150,14 @@ class CustomTextfield extends StatelessWidget {
   final void Function(String)? onChanged;
 
   const CustomTextfield({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.trailingSvg,
     this.controller,
     this.keyboardType,
     this.obscureText = false,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

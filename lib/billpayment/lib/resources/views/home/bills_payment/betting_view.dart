@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+import 'package:dinissa/billpayment/lib/resources/widgets/usable_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -46,7 +46,7 @@ class BettingViewState extends State<BettingView> {
 
   // Assuming this is in an async function
   Future<void> fetchTvPlans() async {
-
+    billPaymentsController.isLoading.value = true;
     // Await the future to get the actual data
     brokers = await billPaymentsController.getBrokers();
     // Now you can use the `bundles` list
@@ -70,7 +70,7 @@ class BettingViewState extends State<BettingView> {
         ),
       ),
       body: Obx((){
-        return  billPaymentsController.isLoading.value == true ? const UsableLoading() : CustomScrollView(slivers: [
+        return  billPaymentsController.isLoading.value ? const UsableLoading() : CustomScrollView(slivers: [
           SliverFillRemaining(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),

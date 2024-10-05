@@ -1,6 +1,8 @@
+import 'package:dinissa/util/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app_colors.dart';
-import 'package:flutter_app/dashed_line_painter.dart';
+
+
+
 
 class LoanDetails extends StatefulWidget {
   const LoanDetails({super.key});
@@ -250,4 +252,41 @@ class _LoanDetailsState extends State<LoanDetails> {
       ),
     );
   }
+}
+
+
+
+class DashedLinePainter extends CustomPainter {
+  final Color color;
+  final double dashWidth;
+  final double dashSpace;
+
+  DashedLinePainter({
+    required this.color,
+    required this.dashWidth,
+    required this.dashSpace,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0;
+
+    final Path path = Path();
+    double distance = 0.0;
+
+    while (distance < size.width) {
+      path.moveTo(distance, 0);
+      distance += dashWidth;
+      path.lineTo(distance, 0);
+      distance += dashSpace;
+    }
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

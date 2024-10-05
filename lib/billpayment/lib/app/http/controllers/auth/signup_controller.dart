@@ -1,10 +1,9 @@
 import 'dart:developer';
-import 'package:billvaoit/routes/routes.dart';
+import '../../../../routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth_api_service.dart';
 // import '../controllers/auth_controller.dart';
-import '../auth/AuthController.dart';
+import 'AuthController.dart';
 
 class SignupController extends AuthController {
   final GlobalKey<FormState> signupFormKey =
@@ -23,9 +22,9 @@ class SignupController extends AuthController {
   FocusNode passwordFocusNode = FocusNode();
   FocusNode confirmPasswordFocusNode = FocusNode();
 
-  SignupController(AuthApiService authenticationService)
-      : super(authenticationService);
+  SignupController(super.authenticationService);
 
+  @override
   void onInit() {
     _addListener();
     // textFieldFocusNode.hasFocus = false;
@@ -112,7 +111,7 @@ class SignupController extends AuthController {
     if (value == null || value.isEmpty) {
       return 'This field is required';
     }
-    log('${value}--${passwordController.value.text}');
+    log('$value--${passwordController.value.text}');
     if (value != passwordController.value.text) {
       return 'Confimation password does not match the entered password';
     }

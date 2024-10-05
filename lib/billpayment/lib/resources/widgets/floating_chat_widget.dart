@@ -5,6 +5,8 @@ import '../../routes/routes.dart';
 import '../views/website_viewer.dart';
 
 class FloatingChatWidget extends StatefulWidget {
+  const FloatingChatWidget({super.key});
+
   @override
   _FloatingChatWidgetState createState() => _FloatingChatWidgetState();
 }
@@ -23,7 +25,7 @@ class _FloatingChatWidgetState extends State<FloatingChatWidget> {
       SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width ,
-          child: WebsiteViewer(url: WebRoutes.tawktoLink,title: "",)
+          // child: const WebsiteViewer(url: WebRoutes.tawktoLink,title: "",)
       );
   }
 
@@ -34,11 +36,11 @@ class _FloatingChatWidgetState extends State<FloatingChatWidget> {
       child: Container(
         height: 60,
         width: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.blueAccent,
         ),
-        child: Icon(
+        child: const Icon(
           Icons.chat,
           color: Colors.white,
           size: 30,

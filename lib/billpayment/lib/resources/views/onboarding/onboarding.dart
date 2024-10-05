@@ -92,7 +92,7 @@ class FirstPage extends StatelessWidget {
                     title: 'Get Started',
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (_) =>  SignUpScreen(),
+                        builder: (_) =>  const SignUpScreen(),
                       ));
                     },
                   ),

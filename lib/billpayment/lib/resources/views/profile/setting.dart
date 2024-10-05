@@ -1,9 +1,8 @@
-import 'package:billvaoit/resources/views/profile/withdrawal_2fa.dart';
+// import '../../resources/views/profile/withdrawal_2fa.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../utils/app_colors.dart';
-import 'change_language.dart';
 import 'change_password.dart';
 import 'change_pin.dart';
 

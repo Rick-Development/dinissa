@@ -1,21 +1,17 @@
 
 
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:billvaoit/app/http/controllers/deposit_controller.dart';
-import 'package:billvaoit/app/http/controllers/payment_controller.dart';
-import 'package:billvaoit/resources/utils/app_colors.dart';
-import 'package:billvaoit/resources/views/home/crypto/sell_crypto.dart';
+import '../../../../app/http/controllers/payment_controller.dart';
+import '../../../../app/http/controllers/deposit_controller.dart';
+import '../../../../app/http/controllers/payment_controller.dart';
+import '../../../../resources/utils/app_colors.dart';
+import '../../../../resources/views/home/crypto/sell_crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import '../buy_giftcard/pin_bottomsheet.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../../../app/Models/user/User.dart';
-import '../../../../routes/routes.dart';
 import '../../../utils/button.dart';
 import '../../../widgets/custom_textfield.dart';
 import '../../../widgets/usable_loading.dart';
@@ -73,11 +69,11 @@ class AddMoneyState extends State<AddMoney>{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Gap(8),
+                          const Gap(8),
                           const Text('Add Money',
                             style: TextStyle(fontWeight: FontWeight.bold,
                                 fontSize: 20),),
-                          Gap(14),
+                          const Gap(14),
                           Obx((){
                             return  CustomTextfield(
                               label: 'Choose wallet',
@@ -178,8 +174,8 @@ class AddMoneyState extends State<AddMoney>{
                                                             InkWell(
                                                               onTap: () {
                                                                 paymentController.selectedGateway(bundle['gateway_name']);
-                                                                paymentController.min_amount.value = '${double.parse(bundle['deposit_min_limit'].toString()).toStringAsFixed(6)}';
-                                                                paymentController.max_amount.value = '${double.parse(bundle['deposit_max_limit'].toString()).toStringAsFixed(6)}';
+                                                                paymentController.min_amount.value = double.parse(bundle['deposit_min_limit'].toString()).toStringAsFixed(6);
+                                                                paymentController.max_amount.value = double.parse(bundle['deposit_max_limit'].toString()).toStringAsFixed(6);
                                                                 paymentController.rate.value = 'Rate: ${bundle['rate'].toString()}/\$';
                                                                 paymentController.paymentCurrencyShortCode.value = bundle['currency'].toString().toUpperCase();
                                                                 // amountController.text = bundle['gateway_name'];
@@ -234,7 +230,7 @@ class AddMoneyState extends State<AddMoney>{
 
                               CustomTextfield(
                                 label: 'Amount',
-                                hintText: '${amountController.text}',
+                                hintText: amountController.text,
                                 ctrl: amountController,
                                 keyboardType: TextInputType.number,
                                 // readOnly: true,
@@ -262,10 +258,10 @@ class AddMoneyState extends State<AddMoney>{
                           const Spacer(),
                           primaryButton(context, color: AppColors.primaryColor, title: 'Confirm',
                               onTap: () async {
-                                String _min = paymentController.min_amount.value.toString().replaceAll('Min ','');
-                                String _max = paymentController.max_amount.value.toString().replaceAll('Max ','');
-                                dynamic min = double.parse(_min);
-                                dynamic max = double.parse(_max);
+                                String min0 = paymentController.min_amount.value.toString().replaceAll('Min ','');
+                                String max0 = paymentController.max_amount.value.toString().replaceAll('Max ','');
+                                dynamic min = double.parse(min0);
+                                dynamic max = double.parse(max0);
                                 if(paymentController.selectedWallet.value == ''){
                                   Get.snackbar(
                                     'Error',
@@ -319,7 +315,7 @@ class AddMoneyState extends State<AddMoney>{
                       ),
                     ),
                       Obx((){
-                        return paymentController.isLoading.value ? UsableLoading() : Container();
+                        return paymentController.isLoading.value ? const UsableLoading() : Container();
                       })
                     ]
                 )

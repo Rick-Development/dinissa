@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:billvaoit/app/http/services/api_services.dart';
-import 'package:billvaoit/routes/routes.dart';
 
+import '../../../routes/routes.dart';
 import '../../Models/user/User.dart';
+import '../services/api_services.dart';
 
 class WalletController extends GetxController {
   var isLoading = false.obs; // Observable for loading state

@@ -1,10 +1,5 @@
 import 'dart:convert';
 
-import 'package:billvaoit/app/Models/Wallet.dart';
-import 'package:billvaoit/app/http/controllers/wallet_controller.dart';
-import 'package:billvaoit/resources/views/home/add_money/add_money.dart';
-import 'package:billvaoit/resources/views/home/transfer/transfer_view.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -12,12 +7,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../app/Models/user/User.dart';
 import '../../../app/http/controllers/crypto_controller.dart';
-import '../../../app/http/controllers/user_controller.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/balance_card.dart';
 import '../../widgets/dashboard_topbar.dart';
 import '../home/crypto/currency_card_chart.dart';
-import '../home/dashboard.dart';
+import '../home/transfer/transfer_view.dart';
 import '../home/withdrawal/withdrawal_by_card_view.dart';
 
 class WalletView extends StatefulWidget {
@@ -50,11 +44,11 @@ class _WalletViewState extends State<WalletView> {
 
   @override
   Widget build(BuildContext context) {
-    final WalletController walletController = Get.put(WalletController());
-    walletController.fetchResponse();
+    // final WalletController walletController = Get.put(WalletController());
+    // walletController.fetchResponse();
 
-    Wallet wallet = Wallet();
-    Map<String, dynamic> currencyDatas = wallet.getCurrencyData();
+    // Wallet wallet = Wallet();
+    // Map<String, dynamic> currencyDatas = wallet.getCurrencyData();
 
     User user = User();
     // UserController userController = Get.put(UserController());
@@ -64,7 +58,7 @@ class _WalletViewState extends State<WalletView> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: DasboardTopBar(),
+        title: const DasboardTopBar(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -391,7 +385,7 @@ class _WalletViewState extends State<WalletView> {
 class CurrencyList extends StatelessWidget {
   final CryptoController controller;
 
-  const CurrencyList({required this.controller});
+  const CurrencyList({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -424,7 +418,7 @@ class CurrencyCard extends StatelessWidget {
   final int isDefault;
   final String createdAt;
 
-  const CurrencyCard({
+  const CurrencyCard({super.key, 
     required this.currencyKey,
     required this.currencyFullname,
     required this.currencySymbol,
@@ -469,7 +463,7 @@ Widget transactionHistoryWidget(
         BoxShadow(
           color: Colors.black.withOpacity(0.1),
           blurRadius: 6,
-          offset: Offset(0, 3),
+          offset: const Offset(0, 3),
         ),
       ],
     ),

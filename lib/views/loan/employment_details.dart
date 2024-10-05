@@ -1,10 +1,13 @@
 import 'package:dinissa/util/app_colors.dart';
+import 'package:dinissa/views/loan/loan_offer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
 import '../../widgets/custom_back_button.dart';
 
 class EmploymentDetailsScreen extends StatefulWidget {
+  const EmploymentDetailsScreen({super.key});
+
   @override
   _EmploymentDetailsScreenState createState() => _EmploymentDetailsScreenState();
 }
@@ -18,7 +21,7 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
       appBar: AppBar(
         elevation: 0,
         leading: customBackButton(context: context),
-        title: Text(
+        title: const Text(
           'Employment Details',
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
@@ -29,19 +32,19 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTextField(
               label: 'How much do they pay you per month',
-              prefixIcon: Text('₦', style: TextStyle(color: Colors.black)),
+              prefixIcon: const Text('₦', style: TextStyle(color: Colors.black)),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTextField(
               label: 'Employment status',
               hintText: 'Select employment status',
               onTap: () => _showEmploymentStatusModal(context),
               readOnly: true,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTextField(
               label: 'Company Name',
             ),
@@ -49,11 +52,11 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
             // _buildTextField(
             //   label: 'Company ID',
             // ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTextField(
               label: 'Employee ID',
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildFileUploadField(
               label: 'Upload Educational Qualification',
               onTap: () async {
@@ -61,14 +64,14 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
               },
             ),
             if (_selectedFile != null) _buildFilePreview(_selectedFile!),
-            Spacer(),
-            Text(
+            const Spacer(),
+           const Text(
               'We ask you about your income to better understand your needs',
               style: TextStyle(color: Colors.black, fontSize: 14),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -76,19 +79,19 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 onPressed: () {
                   // Save action
-                  print("Save tapped");
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const LoanOfferScreen()));
                 },
-                child: Text(
+                child: const Text(
                   'Save',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -107,14 +110,14 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
       children: [
         Text(
           label,
-          style: TextStyle(color: Colors.black, fontSize: 14),
+          style: const TextStyle(color: Colors.black, fontSize: 14),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         TextField(
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(color: Colors.grey),
             prefixIcon: prefixIcon != null
                 ? Center(
               widthFactor: 2,
@@ -122,9 +125,9 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
             )
                 : null,
             contentPadding:
-            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
             filled: true,
-            fillColor: Color(0xFFf2f6fa),
+            fillColor: const Color(0xFFf2f6fa),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
@@ -146,24 +149,24 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
       children: [
         Text(
           label,
-          style: TextStyle(color: Colors.black, fontSize: 14),
+          style: const TextStyle(color: Colors.black, fontSize: 14),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         GestureDetector(
           onTap: onTap,
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: Color(0xFFf2f6fa),
+              color: const Color(0xFFf2f6fa),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
-                Icon(Icons.upload_file, color: Colors.grey),
-                SizedBox(width: 10),
+                const Icon(Icons.upload_file, color: Colors.grey),
+                const SizedBox(width: 10),
                 Text(
                   _selectedFile?.name ?? 'Upload File',
-                  style: TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),
@@ -176,16 +179,16 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
   Widget _buildFilePreview(PlatformFile file) {
     if (file.extension == 'jpg' || file.extension == 'png' || file.extension == 'jpeg') {
       return Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         height: 200,
         child: Image.memory(file.bytes!),
       );
     } else {
       return Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: Text(
           'File selected: ${file.name}',
-          style: TextStyle(color: Colors.black, fontSize: 14),
+          style: const TextStyle(color: Colors.black, fontSize: 14),
         ),
       );
     }
@@ -209,31 +212,31 @@ class _EmploymentDetailsScreenState extends State<EmploymentDetailsScreen> {
       context: context,
       builder: (context) {
         return Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           height: 250,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Select Employment Status',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               ListTile(
-                title: Text('Employed'),
+                title: const Text('Employed'),
                 onTap: () {
                   Navigator.pop(context);
                   // Set Employment status value
                 },
               ),
               ListTile(
-                title: Text('Self-employed'),
+                title: const Text('Self-employed'),
                 onTap: () {
                   Navigator.pop(context);
                   // Set Employment status value
                 },
               ),
               ListTile(
-                title: Text('Unemployed'),
+                title: const Text('Unemployed'),
                 onTap: () {
                   Navigator.pop(context);
                   // Set Employment status value

@@ -1,9 +1,7 @@
 
 
 
-import 'package:billvaoit/resources/views/profile/profile.dart';
-import 'package:billvaoit/resources/views/profile/profile_setting.dart';
-import 'package:flutter/cupertino.dart';
+import '../../resources/views/profile/profile_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -13,7 +11,10 @@ import '../utils/app_colors.dart';
 import '../views/home/add_money/add_money.dart';
 
 class DasboardTopBar extends StatelessWidget{
+  const DasboardTopBar({super.key});
 
+
+  @override
   Widget build(BuildContext context){
     return  Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,14 +39,14 @@ class DasboardTopBar extends StatelessWidget{
       ),
             const Gap(8),
             Text('Hi, ${User().username} 👋🏿',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
             ),),
           ],
         ),
         InkWell(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => AddMoney()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const AddMoney()));
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,

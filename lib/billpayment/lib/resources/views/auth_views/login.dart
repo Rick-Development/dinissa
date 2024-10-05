@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/auth_views/sign_up.dart';
+import '../../views/auth_views/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,6 @@ import '../../../app/http/controllers/auth/auth_controller.dart';
 import '../../../app/http/controllers/user_controller.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/button.dart';
-import '../../widgets/custom_textfield.dart';
 import '../../widgets/usable_loading.dart';
 import '../../widgets/usable_textfield.dart';
 import '../home.dart';
@@ -121,7 +120,7 @@ class LoginView extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(SignUpScreen());
+                    Get.to(const SignUpScreen());
                   },
                   child: Text(
                     'Create account',

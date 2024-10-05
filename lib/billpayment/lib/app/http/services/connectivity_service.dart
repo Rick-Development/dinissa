@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class ConnectivityService extends GetxService {
     });
 
     // close listener after 30 seconds, so the program doesn't run forever
-    Future.delayed(Duration(seconds: 30), () {
+    Future.delayed(const Duration(seconds: 30), () {
       listener.cancel();
     });
   }

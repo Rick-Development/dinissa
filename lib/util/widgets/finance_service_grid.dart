@@ -1,10 +1,14 @@
+import 'package:dinissa/billpayment/lib/resources/views/home/bills_payment/airtime_bill_view.dart';
+import 'package:dinissa/billpayment/lib/resources/views/home/bills_payment/betting_view.dart';
+import 'package:dinissa/billpayment/lib/resources/views/home/bills_payment/data_bill_view.dart.dart';
+import 'package:dinissa/billpayment/lib/resources/views/home/bills_payment/electricity_bill_view.dart';
+import 'package:dinissa/billpayment/lib/resources/views/home/bills_payment/tv_bill_view.dart';
 import 'package:dinissa/views/ComingSoonScreen.dart';
 import 'package:dinissa/views/invest/investment_screen.dart';
 import 'package:dinissa/views/loan/LoanScreen.dart';
 import 'package:dinissa/views/savings/saving_screen.dart';
 import 'package:dinissa/views/transactions/transaction_history_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:dinissa/views/loan/loan_application_page.dart';
 
 import '../app_colors.dart';
 // import '../screens/send_funds_screen.dart'; // Import necessary screens
@@ -98,12 +102,13 @@ class FinanceServicesGrid extends StatelessWidget {
                 _buildServiceCard(context, 'To Bank', Icons.account_balance, const ComingSoonScreen()),
                 _buildServiceCard(context, 'Add Fund', Icons.add_circle, const ComingSoonScreen()),
                 _buildServiceCard(context, 'Withdraw', Icons.money_off, const ComingSoonScreen()),
-                _buildServiceCard(context, 'Airtime', Icons.phone_android, const ComingSoonScreen()),
-                _buildServiceCard(context, 'Data', Icons.wifi, const ComingSoonScreen()),
-                _buildServiceCard(context, 'Betting', Icons.sports_soccer, const ComingSoonScreen()),
-                _buildServiceCard(context, 'Cable Tv', Icons.tv, const ComingSoonScreen()),
+                _buildServiceCard(context, 'Airtime', Icons.phone_android, const BuyAirtimeView()),
+                _buildServiceCard(context, 'Data', Icons.wifi, const BuyDataView()),
+                _buildServiceCard(context, 'Betting', Icons.sports_soccer, const BettingView()),
+                _buildServiceCard(context, 'Cable Tv', Icons.tv, const TvBillView()),
+                _buildServiceCard(context, 'Electricity', Icons.electric_bolt_sharp, const ElectricityBillView()),
                 _buildServiceCard(context, 'Save', Icons.savings, const SavingScreen()),
-                _buildServiceCard(context, 'Loan', Icons.request_quote,  LoanScreen()),
+                _buildServiceCard(context, 'Loan', Icons.request_quote,  const LoanScreen()),
                 _buildServiceCard(context, 'Invest', Icons.assessment,  InvestmentScreen()),
                 _buildServiceCard(context, 'Transactions', Icons.receipt_long,   TransactionHistoryScreen()),
               ],

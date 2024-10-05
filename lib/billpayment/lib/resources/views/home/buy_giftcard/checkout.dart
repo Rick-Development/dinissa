@@ -1,5 +1,5 @@
-// import 'package:billvaoit/resources/views/home/buy_giftcard/pin_bottomsheet.dart';
-import 'package:billvaoit/app/Models/user/User.dart';
+// import '../../resources/views/home/buy_giftcard/pin_bottomsheet.dart';
+import '../../../../app/Models/user/User.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
@@ -66,7 +66,7 @@ class CheckoutViewState extends State<CheckoutView> {
     // double sub_total = double.parse(widget.checkoutDetails['senderFee']) * widget.quantity;
     double formattedTotal = ngnAmount * widget.quantity;
     var formatter = NumberFormat("#,##0.00", "en_US");
-    String sub_total = formatter.format(ngnAmount);
+    String subTotal = formatter.format(ngnAmount);
     String total = formatter.format(formattedTotal);
     String image = widget.checkoutDetails['logoUrls'].toString();
     return Scaffold(
@@ -113,7 +113,7 @@ class CheckoutViewState extends State<CheckoutView> {
             rowWidget(context, title: 'Quantity:', value: '${widget.quantity.toString()} * ${widget.checkoutDetails['productName']}'),
             rowWidget(context, title: 'From:', value: User().fullName),
             rowWidget(context, title: 'Unit price:', value:'$eurCurrency $eurAmount'),
-            rowWidget(context, title: 'Subtotal:', value: '$ngnCurrency $sub_total'),
+            rowWidget(context, title: 'Subtotal:', value: '$ngnCurrency $subTotal'),
             rowWidget(context, title: 'Total fee:', value:  '$ngnCurrency $total'),
             const Spacer(flex: 4),
             primaryButton(context, title: 'Confirm', onTap: () async {

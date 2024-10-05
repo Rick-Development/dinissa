@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/profile/transfer_receipt.dart';
+//import '../../resources/views/profile/transfer_receipt.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -66,7 +66,7 @@ class _TransferSecondPageState extends State<TransferSecondPage> {
                         return const PinBottomsheetView(
                           next: SuccessView(
                             content: 'Your Payment has been successful',
-                            secondaryLocation: TransferReceiptPage(),
+                            // secondaryLocation: TransferReceiptPage(),
                           ),
                         );
                       });

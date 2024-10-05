@@ -1,4 +1,4 @@
-import 'package:billvaoit/app/Models/user/User.dart';
+import '../../../../app/Models/user/User.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -46,11 +46,11 @@ class BuySingleGiftcardViewState extends State<BuySingleGiftcardView> {
   Widget build(BuildContext context) {
     sellGiftCardController.selectedPrice.value = '';
     // Map<String, dynamic> cardDetails = widget.cardDetails;
-    TextEditingController email_controller = TextEditingController();
-    TextEditingController phone_controller = TextEditingController();
-    TextEditingController quantity_controller = TextEditingController();
-    email_controller.text = User().email;
-    phone_controller.text = '+${User().mobile}';
+    TextEditingController emailController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController quantityController = TextEditingController();
+    emailController.text = User().email;
+    phoneController.text = '+${User().mobile}';
 
     print( widget.cardDetails);
     return Scaffold(
@@ -217,14 +217,14 @@ class BuySingleGiftcardViewState extends State<BuySingleGiftcardView> {
             CustomTextfield(
               label: 'Gift card details will be sent to',
               hintText: '${User().email}',
-              ctrl: email_controller,
+              ctrl: emailController,
             ),
             const Gap(25),
             CustomTextfield(
               label: 'Receive number',
               hintText: '+${User().mobile}',
               // svgPrefix: 'dropdown',
-              ctrl: phone_controller,
+              ctrl: phoneController,
               enabled: true,
             ),
             const Gap(25),
@@ -239,7 +239,7 @@ class BuySingleGiftcardViewState extends State<BuySingleGiftcardView> {
             const Spacer(flex: 3),
             primaryButton(context, title: 'Confirm', onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (_) => CheckoutView(checkoutDetails: widget.cardDetails,email: email_controller.text,phone_number: phone_controller.text,quantity: sellGiftCardController.quantity.value,amount:  sellGiftCardController.selectedPrice.value,),
+                builder: (_) => CheckoutView(checkoutDetails: widget.cardDetails,email: emailController.text,phone_number: phoneController.text,quantity: sellGiftCardController.quantity.value,amount:  sellGiftCardController.selectedPrice.value,),
               ));
             }),
             const Spacer(flex: 1),

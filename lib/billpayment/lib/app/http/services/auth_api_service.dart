@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:billvaoit/routes/routes.dart';
+import '../../../routes/routes.dart';
 import 'package:get/get.dart';
 import '../helpers/helper_mixin.dart';
 import 'api_service.dart';

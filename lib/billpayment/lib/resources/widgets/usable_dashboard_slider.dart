@@ -8,9 +8,9 @@ class UsableDashboardSlider extends StatefulWidget {
   final List<String> imagePaths;
 
   const UsableDashboardSlider({
-    Key? key,
+    super.key,
     required this.imagePaths,
-  }) : super(key: key);
+  });
 
   @override
   _UsableDashboardSliderState createState() => _UsableDashboardSliderState();

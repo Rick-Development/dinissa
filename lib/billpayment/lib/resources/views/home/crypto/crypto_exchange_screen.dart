@@ -3,20 +3,25 @@ import 'package:get/get.dart';
 import '../../../../app/http/controllers/crypto_controller.dart';
 // import 'crypto_controller.dart';
 
-class CryptoExchangeScreen extends StatelessWidget {
-  final CryptoController controller = Get.put(CryptoController());
+class CryptoExchangeScreen extends StatefulWidget {
 
+  const CryptoExchangeScreen({super.key});
+ State<CryptoExchangeScreen> createState() => CryptoExchangeScreenState();
+}
+
+class CryptoExchangeScreenState extends State<CryptoExchangeScreen>{
+  late CryptoController controller = Get.put(CryptoController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Crypto Exchange')),
+      appBar: AppBar(title: const Text('Crypto Exchange')),
       body: Column(
         children: [
           Obx(() => Text("Available Balance: ₦${controller.availableBalance.value}")),
           ElevatedButton(onPressed: () =>  print('deposite'),//Get.to(() => DepositScreen()),
-              child: Text("Deposit")),
+              child: const Text("Deposit")),
           ElevatedButton(onPressed: () =>  print('withdraw'),//Get.to(() => WithdrawScreen()),
-              child: Text("Withdraw")),
+              child: const Text("Withdraw")),
           // Display coins list
           Expanded(
             child: ListView.builder(

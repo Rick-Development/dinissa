@@ -74,45 +74,45 @@ class BillPaymentsController extends GetxController {
   }
 
   Future<bool> buyAirtime() async{
-    var buy_airtime = storage.read('buy_airtime');
-    print('phone number: ${buy_airtime['phone_number']}');
-    double amount  = double.parse(buy_airtime['amount'].replaceAll("₦",""));
-    print("${buy_airtime['network'] } ${buy_airtime['phone_number']} ${amount}");
-    String network = buy_airtime['network'].toString();
-    String phone_number = buy_airtime['phone_number'].toString();
-    String network_id = '01';
+    var buyAirtime = storage.read('buy_airtime');
+    print('phone number: ${buyAirtime['phone_number']}');
+    double amount  = double.parse(buyAirtime['amount'].replaceAll("₦",""));
+    print("${buyAirtime['network'] } ${buyAirtime['phone_number']} $amount");
+    String network = buyAirtime['network'].toString();
+    String phoneNumber = buyAirtime['phone_number'].toString();
+    String networkId = '01';
     if(network == 'mtn'){
-      network_id = '01';
+      networkId = '01';
     }else if(network == 'airtel'){
-      network_id = '04';
+      networkId = '04';
     }else if(network == 'glo'){
-      network_id = '02';
+      networkId = '02';
     }else if(network == '9mobile'){
-      network_id = '03';
+      networkId = '03';
     }
-    await purchaseAirtime(network_id,phone_number,amount);
+    await purchaseAirtime(networkId,phoneNumber,amount);
     return false;
   }
 
   Future<void> buyData() async{
-    var buy_data = storage.read('buy_data');
-    print(buy_data);
-    print('phone number: ${buy_data['phone_number']}');
-    String network = buy_data['network'].toString();
-    String phone_number =  buy_data['phone_number'].toString();
-    String amount = buy_data['amount'].toString();
-    String network_id = '01';
+    var buyData = storage.read('buy_data');
+    print(buyData);
+    print('phone number: ${buyData['phone_number']}');
+    String network = buyData['network'].toString();
+    String phoneNumber =  buyData['phone_number'].toString();
+    String amount = buyData['amount'].toString();
+    String networkId = '01';
     if(network == 'mtn'){
-      network_id = '01';
+      networkId = '01';
     }else if(network == 'airtel'){
-      network_id = '04';
+      networkId = '04';
     }else if(network == 'glo'){
-      network_id = '02';
+      networkId = '02';
     }else if(network == '9mobile'){
-      network_id = '03';
+      networkId = '03';
     }
 
-    await purchaseDataBundle(network_id,phone_number,amount);
+    await purchaseDataBundle(networkId,phoneNumber,amount);
     // {orderid: 6630694527, statuscode: 100, status: ORDER_RECEIVED, productname: 500 MB, amount: 149, mobilenetwork: MTN, mobilenumber: 09069138338, walletbalance: 794.081298828125}
     // return false;
   }
@@ -150,7 +150,7 @@ class BillPaymentsController extends GetxController {
       print(data);
       if (response.statusCode == 200 && data['status'] == "ORDER_RECEIVED") {
         // Handle success
-        this.status.value = data['status'];
+        status.value = data['status'];
         print("Airtime purchased successfully: ${data['status']}");
 
         Get.snackbar(
@@ -192,7 +192,7 @@ class BillPaymentsController extends GetxController {
     // 'plan': plan,
     dynamic amount =  electricity['amount'].toString();
     var channel = electricity['channel'].toString();
-    var sport_id = electricity['sport_id'].toString();
+    var sportId = electricity['sport_id'].toString();
     try {
 
       String accessToken = user.accessToken;
@@ -209,7 +209,7 @@ class BillPaymentsController extends GetxController {
           'phone_number': User().mobile.toString(),
           'amount': amount,
           'request_id':1,
-          'customer_id': sport_id,
+          'customer_id': sportId,
         }),
       );
       // print(data);
@@ -218,7 +218,7 @@ class BillPaymentsController extends GetxController {
 
       if (response.statusCode == 200 && data['status'] == "ORDER_RECEIVED") {
         // Handle success
-        this.status.value = data['status'];
+        status.value = data['status'];
         storage.write('bill_payment_response', data['status']);
         print("Airtime purchased successfully: ${data['status']}");
 
@@ -255,7 +255,7 @@ class BillPaymentsController extends GetxController {
     } catch (e) {
       // Handle error
       print("Error purchasing airtime: $e");
-      this.status.value = "Error purchasing airtime: $e";
+      status.value = "Error purchasing airtime: $e";
       storage.write('bill_payment_response',"Error purchasing airtime: $e");
     }
 
@@ -277,8 +277,8 @@ class BillPaymentsController extends GetxController {
     // 'plan': plan,
     dynamic amount =  electricity['amount'].toString();
     var channel = electricity['channel'].toString();
-    var meter_number = electricity['meter_number'].toString();
-    var meter_type = electricity['plan']['PRODUCT_ID'].toString();
+    var meterNumber = electricity['meter_number'].toString();
+    var meterType = electricity['plan']['PRODUCT_ID'].toString();
     var electricCompanyCode = electricity['electric_company_code'].toString();
     print('electric_company_code: $electricCompanyCode');
     try {
@@ -296,8 +296,8 @@ class BillPaymentsController extends GetxController {
           'recipient_phoneno': User().mobile.toString(),
           'amount': amount,
           'request_id':1,
-          'meter_type': meter_type,
-          'meter_no': meter_number,
+          'meter_type': meterType,
+          'meter_no': meterNumber,
         }),
       );
       // print(data);
@@ -307,7 +307,7 @@ class BillPaymentsController extends GetxController {
 
       if (response.statusCode == 200 && data['status'] == "ORDER_RECEIVED") {
         // Handle success
-        this.status.value = data['status'];
+        status.value = data['status'];
         storage.write('bill_payment_response', data['status']);
         // print("Airtime purchased successfully: ${data['status']}");
 
@@ -346,7 +346,7 @@ class BillPaymentsController extends GetxController {
       // Handle error
       // print(data);
       print("Error purchasing airtime: $e");
-      this.status.value = "Error Subscribing your meter: $e";
+      status.value = "Error Subscribing your meter: $e";
       storage.write('bill_payment_response',"Error Subscribing your meter: $e");
     }
 
@@ -354,7 +354,7 @@ class BillPaymentsController extends GetxController {
     return false;
   }
   Future<List<Map<String, dynamic>>> getTvPackages(String channel) async {
-    this.tv_packages = [];
+    tv_packages = [];
     try {
       // Make the API call
       final response = await http.get(
@@ -382,7 +382,7 @@ class BillPaymentsController extends GetxController {
           dynamic packages = tvID[key.toString()][0]['PRODUCT'];
           packages.forEach((package) {
             print('Package Name: ${package['PACKAGE_NAME']}, Price: ${package['PACKAGE_AMOUNT']}');
-            this.tv_packages.add({
+            tv_packages.add({
                 'id': count,
                 'PACKAGE_NAME': package['PACKAGE_NAME'],
                 'PACKAGE_AMOUNT': package['PACKAGE_AMOUNT'],
@@ -402,13 +402,13 @@ class BillPaymentsController extends GetxController {
       print("Error: $e");
     }
 
-    print(this.tv_packages);
+    print(tv_packages);
 
-    return this.tv_packages;
+    return tv_packages;
   }
 
   Future<List<Map<String, dynamic>>> getTvBundles() async {
-    this.tv_cable = [];
+    tv_cable = [];
     try {
       // Make the API call
       final response = await http.get(
@@ -432,7 +432,7 @@ class BillPaymentsController extends GetxController {
         // cables[key] = key;
 
         // Add the TV bundle to the 'tv_cable' list
-        this.tv_cable.add({
+        tv_cable.add({
           'id': count,
           'title': key.toString().toUpperCase(),
           'img': key.toString().toLowerCase(),
@@ -449,12 +449,12 @@ class BillPaymentsController extends GetxController {
     }
  // this.getTvPackages(this.);
 
-    print(this.tv_cable);
+    print(tv_cable);
 
-    return this.tv_cable;
+    return tv_cable;
   }
   Future<List<Map<String,dynamic>>> getBrokers() async{
-    this.brokers = [];
+    brokers = [];
     // https://www.nellobytesystems.com/APIBettingCompaniesV2.asp
     try {
       // Make the API call
@@ -470,7 +470,7 @@ class BillPaymentsController extends GetxController {
       int count = 1;
       electricityID.forEach((dynamic value) {
         // print('key  - value: ${value['PRODUCT_CODE']}');
-        this.brokers.add({
+        brokers.add({
             'id': count,
             'title': value['PRODUCT_CODE'].toString(),
             'img': 'dstv'
@@ -482,12 +482,12 @@ class BillPaymentsController extends GetxController {
       print('EXCEPTION $e');
     }
 
-    return this.brokers;
+    return brokers;
   }
 
   Future<List<Map<String, dynamic>>> getElectricityPackages(String channel) async {
     print(channel);
-    this.electricity_packages = [];
+    electricity_packages = [];
     try {
       // Make the API call
       final response = await http.get(
@@ -517,7 +517,7 @@ class BillPaymentsController extends GetxController {
             // print(electricityID[key.toString()]);
             packages.forEach((package) {
               print('Package Name: ${package['PRODUCT_TYPE']}, Price: ${package['PRODUCT_ID']}');
-              this.electricity_packages.add({
+              electricity_packages.add({
                 'PRODUCT_ID': package['PRODUCT_ID'],
                 'PRODUCT_TYPE': package['PRODUCT_TYPE'],
                 "MINIMUN_AMOUNT": package["MINIMUN_AMOUNT"],
@@ -537,12 +537,12 @@ class BillPaymentsController extends GetxController {
       print("Error: $e");
     }
 
-    return this.electricity_packages;
+    return electricity_packages;
   }
 
 
   Future<Map<String, dynamic>> fetchElectricityData() async {
-    final String apiUrl = "https://www.nellobytesystems.com/APIElectricityDiscosV1.asp";
+    const String apiUrl = "https://www.nellobytesystems.com/APIElectricityDiscosV1.asp";
     final response = await http.get(Uri.parse(apiUrl));
     if (response.statusCode == 200) {
       return json.decode(response.body);
@@ -562,7 +562,7 @@ class BillPaymentsController extends GetxController {
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
         var electricityID = data['ELECTRIC_COMPANY'];
-        Map<String, dynamic> electricity_company = {};
+        Map<String, dynamic> electricityCompany = {};
         print(data);
         int count = 1;
 
@@ -575,7 +575,7 @@ class BillPaymentsController extends GetxController {
             // print('inner value: ${innerValue['ID']}');
             // this.electric_company_code.value = innerValue['ID'].toString();
             // print('inner value: ${this.electric_company_code}');
-            this.electrict_plans.add({
+            electrict_plans.add({
               'id':  innerValue['ID'].toString(),
               'title': innerValue['NAME'].toString().toUpperCase(),
               'img': '',
@@ -596,7 +596,7 @@ class BillPaymentsController extends GetxController {
     //   {'id': 2,'title': 'Abuja Electricty','img': 'gotv'},
     //   {'id': 2,'title': 'Ibadan Electricty','img': 'startimes'},
     // ];
-    return this.electrict_plans;
+    return electrict_plans;
   }
 
 
@@ -608,26 +608,26 @@ class BillPaymentsController extends GetxController {
 
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
-        var network_name;
-        var network_ = '${networkLogo.value.toString()}';
+        String networkName = '';
+        var network_ = networkLogo.value.toString();
         if(network_ == 'mtn'){
-          network_name =  network_.toUpperCase();
+          networkName =  network_.toUpperCase();
         }else if(network_ == 'airtel'){
-          network_name = 'Airtel';
+          networkName = 'Airtel';
         }else if(network_ == 'glo'){
-          network_name = 'Glo';
+          networkName = 'Glo';
         }else if(network_ == '9mobile'){
-          network_name = 'm_9mobile';
+          networkName = 'm_9mobile';
         }
 
-        print('Network: $network_name');
+        print('Network: $networkName');
 
 
         (data['MOBILE_NETWORK'] as Map).forEach((key, value) {
-          print('Network Name: $network_name - $key');
-          if (key == network_name) {
+          print('Network Name: $networkName - $key');
+          if (key == networkName) {
             print('Matching data: ${value[0]['PRODUCT']}');
-            this.dataBundles = List<Map<String, dynamic>>.from(value[0]['PRODUCT']);
+            dataBundles = List<Map<String, dynamic>>.from(value[0]['PRODUCT']);
           }
         });
 
@@ -638,7 +638,7 @@ class BillPaymentsController extends GetxController {
       print("Error fetching data: $e");
     }
 
-    return this.dataBundles;
+    return dataBundles;
   }
   // Purchase Airtime
   Future<void> purchaseAirtime(String network, String phoneNumber, double amount) async {
@@ -665,7 +665,7 @@ class BillPaymentsController extends GetxController {
 
       if (response.statusCode == 200 && data['status'] == "ORDER_RECEIVED") {
         // Handle success
-        this.status.value = data['status'];
+        status.value = data['status'];
         storage.write('bill_payment_response', data['status']);
         print("Airtime purchased successfully: ${data['status']}");
 
@@ -699,7 +699,7 @@ class BillPaymentsController extends GetxController {
     } catch (e) {
       // Handle error
       print("Error purchasing airtime: $e");
-      this.status.value = "Error purchasing airtime: $e";
+      status.value = "Error purchasing airtime: $e";
       storage.write('bill_payment_response',"Error purchasing airtime: $e");
     }
   }
@@ -727,7 +727,7 @@ class BillPaymentsController extends GetxController {
       var data = json.decode(response.body);
       if (response.statusCode == 200 && data['status'] == "ORDER_RECEIVED") {
         // Handle success
-        this.status.value = data['status'];
+        status.value = data['status'];
         print("Airtime purchased successfully: ${data['status']}");
 
         Get.snackbar(

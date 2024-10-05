@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+import '../../../../resources/widgets/usable_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -48,8 +48,8 @@ class TvBillViewState extends State<TvBillView> {
 
   // Assuming this is in an async function
   Future<void> fetchTvPlans() async {
-    BillPaymentsController billPaymentsController = Get.put(BillPaymentsController());
-
+    // BillPaymentsController billPaymentsController = Get.put(BillPaymentsController());
+    billPaymentsController.isLoading.value = true;
     // Await the future to get the actual data
     tv_plans = await billPaymentsController.getTvBundles();
     tv_packages = await billPaymentsController.getTvPackages('dstv');

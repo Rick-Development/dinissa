@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../../services/auth_api_service.dart';
 import '../auth_controller.dart';
 
 class LoginController extends AuthController {
@@ -13,8 +12,7 @@ class LoginController extends AuthController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  LoginController(AuthApiService authenticationService)
-      : super(authenticationService);
+  LoginController(super.authenticationService);
 
   @override
   void onClose() {

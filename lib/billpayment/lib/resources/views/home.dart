@@ -1,6 +1,5 @@
-import 'package:billvaoit/app/http/controllers/pin_controller.dart';
-import 'package:billvaoit/resources/views/virtual_dollar_card/card_details_view.dart';
-import 'package:billvaoit/resources/widgets/usable_loading.dart';
+import '../../app/http/controllers/pin_controller.dart';
+import '../../resources/widgets/usable_loading.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,7 +66,7 @@ class _HomeState extends State<Home> {
           print("Connected to the Internet");
         });
       }
-    } as void Function(List<ConnectivityResult> event)?);
+    });
   }
 
 

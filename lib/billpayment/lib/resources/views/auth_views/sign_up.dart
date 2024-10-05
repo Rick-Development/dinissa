@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/auth_views/login.dart';
+import '../../views/auth_views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -7,8 +7,9 @@ import '../../utils/app_colors.dart';
 import '../../utils/button.dart';
 import '../../widgets/usable_loading.dart';
 import '../../widgets/usable_textfield.dart';
-import '../home.dart';
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }

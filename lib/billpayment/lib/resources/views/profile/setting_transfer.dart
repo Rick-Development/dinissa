@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/profile/transfer_to_billvaoit.dart';
+// import '../../resources/views/profile/transfer_to_billvaoit.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -44,18 +44,18 @@ class _SettingTransferViewState extends State<SettingTransferView> {
               const Gap(36),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const TransferTobillvaoit(),
-                  ));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (_) => const TransferTobillvaoit(),
+                  // ));
                 },
                 child: Image.asset('assets/images/transfer_to_billvaoit.png'),
               ),
               const Gap(33),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const TransferTobillvaoit(),
-                  ));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //   builder: (_) => const TransferTobillvaoit(),
+                  // ));
                 },
                 child: Image.asset('assets/images/transfer_to_euro.png'),
               ),

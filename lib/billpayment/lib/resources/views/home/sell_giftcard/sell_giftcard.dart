@@ -1,10 +1,9 @@
-import 'package:billvaoit/app/http/controllers/giftcards/sell_giftcard_controller.dart';
+import '../../../../app/http/controllers/giftcards/sell_giftcard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../widgets/custom_textfield.dart';
 import 'sell_single_giftcard.dart';
-import 'package:get/get.dart';
 
 
 class SellGiftcardView extends StatefulWidget {
@@ -86,7 +85,7 @@ class SellGiftcardViewState extends State<SellGiftcardView> {
 Widget giftcardWidget(BuildContext context) => InkWell(
   onTap: () {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) =>  SellSingleGiftcardView(),
+      builder: (_) =>  const SellSingleGiftcardView(),
     ));
   },
   child: Container(

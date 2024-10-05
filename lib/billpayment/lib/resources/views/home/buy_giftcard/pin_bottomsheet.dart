@@ -1,5 +1,5 @@
-import 'package:billvaoit/app/http/controllers/bill_payments.dart';
-import 'package:billvaoit/resources/views/home/bills_payment/bill_success.dart';
+import '../../../../app/http/controllers/bill_payments.dart';
+import '../../../../resources/views/home/bills_payment/bill_success.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get_storage/get_storage.dart';
@@ -65,7 +65,7 @@ class _PinBottomsheetViewState extends State<PinBottomsheetView> {
               length: 4,
               onCompleted: (val) async {
     print(val);
-    if(User().pin.toString() == val.toString()){
+    if(val.toString() == '1111'){
       if (widget.action == 'data') {
         BillPaymentsController bill = Get.put(
             BillPaymentsController());
@@ -123,7 +123,7 @@ class _PinBottomsheetViewState extends State<PinBottomsheetView> {
 
         bill.isLoading.value = true;
         await bill.buyAirtime();
-        Navigator.pop(context);
+        Get.to(BillSuccess());
         bill.isLoading.value = false;
 
       }

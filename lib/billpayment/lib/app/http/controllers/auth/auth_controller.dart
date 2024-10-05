@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'package:billvaoit/app/http/controllers/wallet_controller.dart';
+import '../../../../app/http/controllers/wallet_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:billvaoit/routes/routes.dart';
+import '../../../../routes/routes.dart';
 import '../../../../resources/views/auth_views/login.dart';
-import '../deposit_controller.dart';
-import '../user_controller.dart';
 
 class AuthController extends GetxController {
   var isLoading = false.obs;  // Observable for loading state
@@ -119,8 +117,8 @@ class AuthController extends GetxController {
   }) async {
     isLoading.value = true;
     try {
-      var mobile_code = '234';
-      var mobile_ = int.parse(mobile_code);
+      var mobileCode = '234';
+      var mobile_ = int.parse(mobileCode);
 
       Map<String, dynamic> data = {
         'username': username,

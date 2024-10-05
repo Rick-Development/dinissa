@@ -1,4 +1,4 @@
-import 'package:billvaoit/resources/views/home/hotel_booking/search_hotel_results.dart';
+import '../../../../resources/views/home/hotel_booking/search_hotel_results.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';

@@ -1,4 +1,4 @@
-import 'package:billvaoit/app/http/controllers/crypto_controller.dart';
+import '../../../../app/http/controllers/crypto_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
@@ -46,7 +46,7 @@ class TradeSuccessViewState extends State<TradeSuccessView> {
   @override
   Widget build(BuildContext context) {
     GetStorage storage = GetStorage();
-    var coin_name = storage.read('sell_crypto')['name'];
+    var coinName = storage.read('sell_crypto')['name'];
     var amount = storage.read('trade_crypto')['amount'];
     return Scaffold(
       body:
@@ -84,7 +84,7 @@ class TradeSuccessViewState extends State<TradeSuccessView> {
                 ),
                 const Gap(10),
                 Text(
-                  widget.content ?? 'You Successfully trade $amount  ${coin_name} ',
+                  widget.content ?? 'You Successfully trade $amount  $coinName ',
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge

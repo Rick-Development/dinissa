@@ -27,7 +27,7 @@ class CustomTextfield extends StatefulWidget {
   final int minLines;
 
   const CustomTextfield({
-    Key? key,
+    super.key,
     this.ctrl,
     this.width,
     this.label,
@@ -46,7 +46,7 @@ class CustomTextfield extends StatefulWidget {
     this.radius,
     this.minLines = 1, // Default to 1 to behave like a single-line input
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTextfield> createState() => _CustomTextfieldState();
